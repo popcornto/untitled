@@ -2,7 +2,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class permutation {
-    static int[] arr = {1, 2, 3, 4};
+
+
+    public static int Permutation(int[] arr, int n) {
+        int count = 0; // permutations counter wird iniziallisiert mit 0 und wird bei jeder Permutation um 1 erhöht
+        if (n == arr.length - 1) {
+            for (int i = 0; i < arr.length; i++) {
+                System.out.print(arr[i] + " ");
+
+            }
+
+            System.out.println();
+            return 1;
+
+        } else {
+            for (int i = n; i < arr.length; i++) {
+                swaparray(arr, n, i);
+                count += Permutation(arr, n + 1);
+                swaparray(arr, n, i);
+            }
+        }
+        return count;
+    }
 
     public static void permutaionoflist() {
         Scanner sc = new Scanner(System.in);
@@ -14,33 +35,29 @@ public class permutation {
             list.add(sc.nextInt());
         }
         System.out.println("The permutation of the list is");
-        permutation(list, 0);
-        System.out.println(n + "!=" + faktorial(n));
+        System.out.println("Es gibt " + permutation(list, 0) + " Permutationen");
     }
 
-    public static void permutation(ArrayList<Integer> list, int k) {
+    public static int permutation(ArrayList<Integer> list, int k) {
+        int numberofpermutation = 0;
         if (k == list.size() - 1) {
             for (int i = 0; i < list.size(); i++) {
-                System.out.print(list.get(i) + "");
+                System.out.print(list.get(i) + " ");
             }
             System.out.println();
+            return 1;
         } else {
             for (int i = k; i < list.size(); i++) {
                 swaplist(list, k, i);
-                permutation(list, k + 1);
+                numberofpermutation += permutation(list, k + 1);
                 swaplist(list, k, i);
             }
         }
-
+        return numberofpermutation;
     }
 
-    public static int faktorial(int n) {
-        int i,fact=1;
-        int number=n;
-        for(i=1;i<=number;i++){
-            fact=fact*i;
-        }
-        return fact;
+    public static void printPermutation(int[] arr, int n) {
+        System.out.println("Es gibt " +Permutation(arr, n)+ " Permutationen");
     }
     public static void swaplist(ArrayList<Integer> list, int i, int j) {
         int temp = list.get(i);
@@ -54,33 +71,11 @@ public class permutation {
         array[j] = temp;
     }
 
-    public static int printPermutationofarray(int[] arr, int n) {
-        int numberofpermutations = 0;
-        if (n == arr.length - 1) {
-            for (int i = 0; i < arr.length; i++) {
-                System.out.print(arr[i] + " ");
-
-            }
-
-            System.out.println();
-
-        } else {
-
-            for (int i = n; i < arr.length; i++) {
-
-                swaparray(arr, n, i);
-                numberofpermutations++;
-                printPermutationofarray(arr, n + 1);
-                swaparray(arr, n, i);
-            }
-        }
-
-        return numberofpermutations;
-    }
-
     public static void main(String[] args) {
         permutaionoflist();
+        printPermutation(new int[]{1, 2, 3}, 0);
     }
+
 }
 
 

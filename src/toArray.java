@@ -6,7 +6,7 @@ public class toArray {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> list = new ArrayList<>();
         try {
-            while (scanner.hasNextLine()) {
+            while (scanner.hasNextLine()) {// liest die eingabe ein des benutzers
                 String input = scanner.nextLine();
                 if (input.equals("")) {
                     break;
