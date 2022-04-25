@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="984f0133-393c-4f54-a856-9e46e87ab92b" name="Changes" comment="nlknlkadfgnlksdg">
-      <change afterPath="$PROJECT_DIR$/src/Array.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maximizer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maximizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Quicksort2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt02 (2).pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enumiration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enumiration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/permutation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/quick.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/quiksort2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Quiksort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/permutation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Quicksort2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quicksort2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quiksort2.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,16 +57,16 @@
       <recent name="C:\Users\Aref\IdeaProjects\untitled\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.enumiration">
-    <configuration name="Array" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Array" />
+  <component name="RunManager" selected="Application.quicksort2">
+    <configuration name="Quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Quicksort2" />
       <module name="untitled" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Quicksort2" />
+    <configuration name="Quiksort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Quiksort" />
       <module name="untitled" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -95,8 +86,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="toArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="toArray" />
+    <configuration name="quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="quicksort2" />
       <module name="untitled" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -104,11 +95,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.quicksort2" />
+        <item itemvalue="Application.Quicksort2" />
+        <item itemvalue="Application.Quiksort" />
         <item itemvalue="Application.enumiration" />
         <item itemvalue="Application.permutation" />
-        <item itemvalue="Application.Quicksort2" />
-        <item itemvalue="Application.toArray" />
-        <item itemvalue="Application.Array" />
       </list>
     </recent_temporary>
   </component>
@@ -137,6 +128,7 @@
       <workItem from="1650750511145" duration="2647000" />
       <workItem from="1650809028284" duration="2101000" />
       <workItem from="1650818308855" duration="12810000" />
+      <workItem from="1650840566793" duration="1968000" />
     </task>
     <task id="LOCAL-00001" summary="nlknlkadfgnlksdg">
       <created>1650528957605</created>
@@ -152,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650529032459</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="nlknlkadfgnlksdg">
+      <created>1650840579760</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650840579760</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
