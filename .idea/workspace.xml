@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="984f0133-393c-4f54-a856-9e46e87ab92b" name="Changes" comment="nlknlkadfgnlksdg">
-      <change afterPath="$PROJECT_DIR$/src/Quiksort.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/QuiksortTwoP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Quiksort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiksort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enumiration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumiration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/QuiksortTwoP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuiksortTwoP.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +130,7 @@
       <workItem from="1650895881422" duration="23000" />
       <workItem from="1650895933445" duration="3893000" />
       <workItem from="1650908462157" duration="304000" />
-      <workItem from="1650998515061" duration="10533000" />
+      <workItem from="1650998515061" duration="12223000" />
     </task>
     <task id="LOCAL-00001" summary="nlknlkadfgnlksdg">
       <created>1650528957605</created>
@@ -162,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650846310002</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="nlknlkadfgnlksdg">
+      <created>1651011906751</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651011906751</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

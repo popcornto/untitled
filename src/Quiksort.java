@@ -82,8 +82,8 @@ public class Quiksort {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<Integer> list = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);   //Scanner für die Eingabe
+        ArrayList<Integer> list = new ArrayList<>(); //wird mit den eingaben gefüllt
         try {
             while (scanner.hasNextLine()) { // liest die eingabe ein
                 String input = scanner.nextLine();
@@ -96,35 +96,36 @@ public class Quiksort {
             System.err.println("Der Input was kein Integer Wert.");
             return;
         }
-        int[] data = new int[list.size()];
+        int[] data = new int[list.size()]; //alle Werte der Liste werden in ein Array geschrieben
         for (int i = 0; i < list.size(); i++) {
             data[i] = list.get(i);
         }
 
         if (isSorted(data)) {
             System.out.println("Array ist schon sortiert");
-        } else {
-            Instant start = Instant.now();
-            if (data.length < 20) {
+            return;
+        }
+        assert !isSorted(data);
+            Instant start = Instant.now();                  //Startzeit
+            if (data.length < 20) {    //wenn die Länge des Arrays kleiner als 20 ist, wird die qsort-Methode aufgerufen und vor- und nach der sortierung ausgedruckt
                 System.out.println("Liste vor dem Sortieren:" + Arrays.toString(data));
                 qsort(data);
                 System.out.println("Liste nach dem Sortieren:" + Arrays.toString(data));
             } else {
                 qsort(data);
             }
-            assert isSorted(data);
-            Instant finish = Instant.now();
+            assert isSorted(data);  //assertion, ob das Array sortiert ist
+            Instant finish = Instant.now(); //Endzeit
             float time = Duration.between(start, finish).toMillis();
-            int Min = data[data.length - 1];
-            long Max = data[0];
-            long Med = 0;
-            for (int i = 0; i < data.length; i++) { // *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen
+            int Min = data[data.length - 1]; //letzter Wert des Arrays ist auch der kleinste Wert nachdem sortiert wurde
+            long Max = data[0]; //erster Wert des Arrays ist auch der größte Wert nachdem sortiert wurde
+            long Med = 0;// *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen
+            for (int i = 0; i < data.length; i++) {
                 Med = data[i] + Med;
             }
             Med = Med / data.length; //*
             System.out.println("Min: " + Min + ", " + "Med: " + Med + ", " + "Max: " + Max);
 
-            System.out.println("Zeit: " + time / 1000 + " Sekunden");
-        }
+            System.out.println("Zeit: " + time / 1000 + " Sekunden"); //Zeit in Sekunden
     }
 }

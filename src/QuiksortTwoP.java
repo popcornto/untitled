@@ -113,7 +113,9 @@ public class QuiksortTwoP {
 
         if (isSorted(data)) { // prüft ob das Array sortiert ist und der Methoden durschgang wird gespart
             System.out.println("Array ist schon sortiert");
-        } else {
+            return;
+        }
+        assert !isSorted(data);
             Instant start = Instant.now();
             if (data.length < 20) {
                 System.out.println("Liste vor dem Sortieren:" + Arrays.toString(data));
@@ -122,7 +124,7 @@ public class QuiksortTwoP {
             } else {
                 qsort(data);
             }
-            assert isSorted(data);
+
             Instant finish = Instant.now();
             float time = Duration.between(start, finish).toMillis();
             int Min = data[data.length - 1];
@@ -135,6 +137,6 @@ public class QuiksortTwoP {
             System.out.println("Min: " + Min + ", " + "Med: " + Med + ", " + "Max: " + Max);
 
             System.out.println("Zeit: " + time / 1000 + " Sekunden");
-        }
+
     }
 }
