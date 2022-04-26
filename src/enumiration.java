@@ -24,29 +24,10 @@ public class enumiration {
         }
         Arrays.sort(data);// sortiert das Array
         System.out.println(Arrays.toString(data)); // gibt das Array aus
-        System.out.println(removeDuplicates2(data));// entfernt doppelte Elemente
+        System.out.print(removeDuplicates2(data));// entfernt doppelte Elemente
         System.out.println(Arrays.toString(data)); // gibt das Array aus
     }
 
-    public static int removeDuplicates(int[] data) {
-        int count = 0;
-        for (int i = 0; i < data.length - 1; i++) {
-            if (data[i] == data[i + 1]) {
-                count++;
-            }
-        }
-        int[] arr = new int[data.length - count];
-        int j = 0;
-        for (int i = 0; i < data.length - 1; i++) {
-            if (data[i] != data[i + 1] || i + 1 == data.length - 1) {
-                arr[j] = data[i];
-                j++;
-            }
-        }
-        System.out.println("nach der leoschen der duplikate " + Arrays.toString(arr));
-        data = arr;
-        return arr.length;
-    }
 
     public static int removeDuplicates2(int[] data) {
         int count = 0;
@@ -57,8 +38,8 @@ public class enumiration {
             }
         }
         Arrays.sort(data);
-        int middle = (data.length - count)-1;
-        int middle1 = middle + 1;
+        int middle = data.length - count;
+        int middle1 = middle;
         for (int i = 0; i < count; i++) {
 
             if (data.length % 2 == 0) {
@@ -70,7 +51,6 @@ public class enumiration {
                 }
             } else {
                 if (count != 0) {
-
                     if (data[middle1] != data[i]) {
                         int temp = data[middle1];
                         data[middle1] = data[i];
@@ -81,7 +61,10 @@ public class enumiration {
             }
 
         }
-        System.out.println(Arrays.toString(data));
+        for (int i = 0; i < count; i++) {
+            System.out.print(data[i] + " ");
+        }
         return count;
     }
+
 }

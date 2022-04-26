@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="984f0133-393c-4f54-a856-9e46e87ab92b" name="Changes" comment="nlknlkadfgnlksdg">
-      <change afterPath="$PROJECT_DIR$/src/Quiksort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Quiksort.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/QuiksortTwoP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Quicksort2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quicksort2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/quiksort2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Quiksort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiksort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enumiration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumiration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,7 @@
       <recent name="C:\Users\Aref\IdeaProjects\untitled\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.quicksort2">
+  <component name="RunManager" selected="Application.Quiksort">
     <configuration name="Quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Quicksort2" />
       <module name="untitled" />
@@ -72,15 +72,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="enumiration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="enumiration" />
+    <configuration name="QuiksortTwoP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="QuiksortTwoP" />
       <module name="untitled" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="permutation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="permutation" />
+    <configuration name="enumiration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="enumiration" />
       <module name="untitled" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -95,11 +95,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Quiksort" />
+        <item itemvalue="Application.QuiksortTwoP" />
+        <item itemvalue="Application.enumiration" />
         <item itemvalue="Application.quicksort2" />
         <item itemvalue="Application.Quicksort2" />
-        <item itemvalue="Application.Quiksort" />
-        <item itemvalue="Application.enumiration" />
-        <item itemvalue="Application.permutation" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +128,11 @@
       <workItem from="1650750511145" duration="2647000" />
       <workItem from="1650809028284" duration="2101000" />
       <workItem from="1650818308855" duration="12810000" />
-      <workItem from="1650840566793" duration="1968000" />
+      <workItem from="1650840566793" duration="2101000" />
+      <workItem from="1650895881422" duration="23000" />
+      <workItem from="1650895933445" duration="3893000" />
+      <workItem from="1650908462157" duration="304000" />
+      <workItem from="1650998515061" duration="10533000" />
     </task>
     <task id="LOCAL-00001" summary="nlknlkadfgnlksdg">
       <created>1650528957605</created>
@@ -151,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650840579760</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="nlknlkadfgnlksdg">
+      <created>1650846310002</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650846310002</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,15 +195,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/enumiration.java</url>
-          <line>50</line>
-          <properties class="enumiration" method="removeDuplicates2">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
