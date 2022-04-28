@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="984f0133-393c-4f54-a856-9e46e87ab92b" name="Changes" comment="nlknlkadfgnlksdg">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Quiksort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiksort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuiksortTwoP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuiksortTwoP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enumiration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumiration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
       <recent name="C:\Users\Aref\IdeaProjects\untitled\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Quiksort">
+  <component name="RunManager" selected="Application.enumiration">
     <configuration name="Quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Quicksort2" />
       <module name="untitled" />
@@ -93,9 +93,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.enumiration" />
         <item itemvalue="Application.Quiksort" />
         <item itemvalue="Application.QuiksortTwoP" />
-        <item itemvalue="Application.enumiration" />
         <item itemvalue="Application.quicksort2" />
         <item itemvalue="Application.Quicksort2" />
       </list>
@@ -130,7 +130,8 @@
       <workItem from="1650895881422" duration="23000" />
       <workItem from="1650895933445" duration="3893000" />
       <workItem from="1650908462157" duration="304000" />
-      <workItem from="1650998515061" duration="12223000" />
+      <workItem from="1650998515061" duration="12455000" />
+      <workItem from="1651177849728" duration="9581000" />
     </task>
     <task id="LOCAL-00001" summary="nlknlkadfgnlksdg">
       <created>1650528957605</created>
@@ -167,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651011906751</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="nlknlkadfgnlksdg">
+      <created>1651013770509</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651013770509</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
