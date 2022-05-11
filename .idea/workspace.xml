@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="984f0133-393c-4f54-a856-9e46e87ab92b" name="Changes" comment="nlknlkadfgnlksdg">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Frequezcounter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Heaps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/QuickSelect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blatt04.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/countSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/minHeap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/enumiration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumiration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/quicksort2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/quicksort2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +53,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -55,23 +61,33 @@
       <recent name="C:\Users\Aref\IdeaProjects\untitled\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.enumiration">
-    <configuration name="Quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Quicksort2" />
+  <component name="RunManager" selected="Application.Heaps">
+    <configuration name="Frequezcounter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Frequezcounter" />
       <module name="untitled" />
+      <option name="PROGRAM_PARAMETERS" value="3" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Quiksort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Quiksort" />
+    <configuration name="Heaps" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Heaps" />
       <module name="untitled" />
+      <option name="PROGRAM_PARAMETERS" value="8" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QuiksortTwoP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="QuiksortTwoP" />
+    <configuration name="QuickSelect" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="QuickSelect" />
+      <module name="untitled" />
+      <option name="PROGRAM_PARAMETERS" value="3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="countSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="countSort" />
       <module name="untitled" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -84,20 +100,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="quicksort2" />
-      <module name="untitled" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue="Application.countSort" />
+      <item itemvalue="Application.enumiration" />
+      <item itemvalue="Application.Frequezcounter" />
+      <item itemvalue="Application.Heaps" />
+      <item itemvalue="Application.QuickSelect" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Heaps" />
+        <item itemvalue="Application.QuickSelect" />
+        <item itemvalue="Application.Frequezcounter" />
+        <item itemvalue="Application.countSort" />
         <item itemvalue="Application.enumiration" />
-        <item itemvalue="Application.Quiksort" />
-        <item itemvalue="Application.QuiksortTwoP" />
-        <item itemvalue="Application.quicksort2" />
-        <item itemvalue="Application.Quicksort2" />
       </list>
     </recent_temporary>
   </component>
@@ -131,7 +147,23 @@
       <workItem from="1650895933445" duration="3893000" />
       <workItem from="1650908462157" duration="304000" />
       <workItem from="1650998515061" duration="12455000" />
-      <workItem from="1651177849728" duration="9581000" />
+      <workItem from="1651177849728" duration="9713000" />
+      <workItem from="1651246525774" duration="2047000" />
+      <workItem from="1651424230107" duration="2060000" />
+      <workItem from="1651442925928" duration="2226000" />
+      <workItem from="1651505841937" duration="9581000" />
+      <workItem from="1651598588988" duration="826000" />
+      <workItem from="1651600256729" duration="813000" />
+      <workItem from="1651601301673" duration="495000" />
+      <workItem from="1651601808853" duration="1039000" />
+      <workItem from="1651602963260" duration="165000" />
+      <workItem from="1651603166437" duration="2220000" />
+      <workItem from="1651772376875" duration="2678000" />
+      <workItem from="1651942213057" duration="1191000" />
+      <workItem from="1652038512381" duration="300000" />
+      <workItem from="1652038907300" duration="717000" />
+      <workItem from="1652200152792" duration="5925000" />
+      <workItem from="1652306840000" duration="950000" />
     </task>
     <task id="LOCAL-00001" summary="nlknlkadfgnlksdg">
       <created>1650528957605</created>
@@ -175,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651013770509</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="nlknlkadfgnlksdg">
+      <created>1651187703875</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1651187703875</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +247,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/enumiration.java</url>
+          <line>61</line>
+          <properties class="enumiration" method="removeDuplicates2">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
