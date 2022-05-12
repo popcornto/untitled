@@ -16,13 +16,13 @@ public class Heaps {
     }
 
     public static void minHeapify(int[] heap, int i, int n) {
-        if (!(i > (n / 2)-1 && i <= n - 1)) {                         // Es wird geguckt ob i Kinder hat
-            if (heap[i] > heap[2 * i ] || heap[i] > heap[2 * i+1 ]) {     // Wenn ja dann wird geguckt ob ein Kind kleiner ist
+        if (!(i > (n / 2) - 1 && i <= n - 1)) {                         // Es wird geguckt ob i Kinder hat
+            if (heap[i] > heap[2 * i] || heap[i] > heap[2 * i + 1]) {     // Wenn ja dann wird geguckt ob ein Kind kleiner ist
                 // Swap with the left child and heapify
                 // the left child
-                if (heap[2 * i ] < heap[2 * i + 1]) {                   // Wenn ja dann mit if else wird das kleinere Kind bestimmt und sie werden ausgetauscht
-                    swap(heap, i, 2 * i );                         // und dann wird minHeapify aufgerufen um diesen Teil zu korrigieren
-                    minHeapify(heap, 2 * i , n);
+                if (heap[2 * i] < heap[2 * i + 1]) {                   // Wenn ja dann mit if else wird das kleinere Kind bestimmt und sie werden ausgetauscht
+                    swap(heap, i, 2 * i);                         // und dann wird minHeapify aufgerufen um diesen Teil zu korrigieren
+                    minHeapify(heap, 2 * i, n);
                 }
 
                 // Swap with the right child and heapify
@@ -36,9 +36,21 @@ public class Heaps {
     }
 
     public static void buildMinHeap(int[] data, int n) {
-        for (int j = (n/2); j > -1 ; j--) {                           //Vom ersten Knoten mit einem Kind wird minHeapify verwendet
+        for (int j = (n / 2); j > -1; j--) {                           //Vom ersten Knoten mit einem Kind wird minHeapify verwendet
             minHeapify(data, j, n);
         }
+    }
+
+    public static boolean checkIfMinHeap(int[] data) {
+        int n = data.length;
+        buildMinHeap(data, n);
+        for (int i = 0; i < n; i++) {
+            if (data[i] > data[(i - 1) / 2]) {
+                System.out.println("Not a min heap");
+                return false;
+            }
+        }
+        return true;
     }
 
     public static int extractMin(int[] data, int n) {
@@ -55,7 +67,8 @@ public class Heaps {
         int n = data.length;
         buildMinHeap(data, n);
         for (int i = 0; i < k - 1; i++) {                           //Jeder Wert wird entfernt bis der k.ste wert erreicht wird
-            extractMin(data, n);                                    //Dieser wird dann zurückgegeben
+            extractMin(data, n);                                  //Dieser wird dann zurückgegeben
+            n--;                                                    //n wird um 1 veringert damit der kleinste wert nicht mehr zum Heap gehört
         }
         return data[0];
     }
@@ -91,8 +104,10 @@ public class Heaps {
             for (int i = 0; i < list.size(); i++) {
                 data[i] = list.get(i);
             }
-        buildMinHeap(data, k);
-        ArraytoString(data);
+            buildMinHeap(data, k);
+            ArraytoString(data);
+            assert checkIfMinHeap(data);
+
+        }
     }
-}
 }

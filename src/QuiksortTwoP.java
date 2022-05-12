@@ -12,7 +12,7 @@ public class QuiksortTwoP {
         temp1 = data[p1];
         temp2 = data[p1 + 1];
         for (int i = p1; i < data.length - 1; i++) {                                    //Partitionierung beginnt hier
-            if (data[p1] < data[i]) {                                            //Elemente finden die größer als das Pivot sind
+            if (data[p1] < data[i]) {             //Elemente finden die größer als das Pivot sind
                 data[p1] = data[i];                                            //
                 int j = p1 + 1;
                 while (j < i + 1) {                                                //Alles in der While-Schleife ist um die Elemente im Array zu verschieben zu der Stelle die hinter das Pivot gekommen ist
@@ -29,9 +29,9 @@ public class QuiksortTwoP {
         }
         int rw = p2;
         for (int i = 0; i < p2; i++) {                                        //Partitionierung beginnt hier
-            if (data[p2] > data[i]) {                                    //Es wird nach Elementen gesucht die kleiner als der Pivot sind
+            if (data[p2] > data[i]) {
+                data[rw] = data[i];                                  //Es wird nach Elementen gesucht die kleiner als der Pivot sind
                 temp1 = data[rw];
-                data[rw] = data[i];
                 temp2 = data[rw - 1];
                 for (int j = rw - 1; j > i - 1; j--) {                            //Hier wird der Array nach rechts verschoben zu der Stelle die hinter das pivot gekommen ist
                     data[j] = temp1;
@@ -56,21 +56,20 @@ public class QuiksortTwoP {
     }
 
     public static void qsort(int data[], int l, int r) {
-
-        if (l < r) {
-
-            int[] m = partition(data, l, r);
-            if (m[0] == l && m[1] == r) {
-                if (m[0] + 1 == m[1]) {
-                    if (data[l] < data[r]) {
+        if (l < r) {								//Rekursionsanker wenn die beiden Pivots gleich gewählt werden dann wird abgebrochen
+            int[] m = partition(data, l, r);		//Erste partition um m1 und m2 zu bekommen
+            if (m[0] == l && m[1] == r) {			//Wenn schon alles sortiert ist und m1 und m2 sich nicht ändern
+                if (m[0] + 1 == m[1]) {				//Dann wird sich einmal angeguckt ob m1 und m2 nebeneinander sind
+                    if (data[l] < data[r]) {		//Wenn das ebenfalls der fall ist dann werden die pivots miteinander verglichen falls der eine größer als der andere ist werden sie vertauscht
                         int temp = data[l];
                         data[l] = data[r];
                         data[r] = temp;
                     }
-                } else {
+                } else {							//Sonst werden einfach die Elemente zwischen den Pivots partitioniert
                     qsort(data, m[0] + 1, m[1] - 1);
                 }
-            } else {
+            }
+            else {									//Partitionierung der 3 Intervalle
                 qsort(data, l, m[0] - 1);
                 qsort(data, m[0] + 1, m[1] - 1);
                 qsort(data, m[1] + 1, r);
@@ -83,7 +82,7 @@ public class QuiksortTwoP {
     }
 
     public static boolean isSorted(int[] data) {
-        for (int i = data.length - 1; 1 < i; i--) { //[1, 2, 3, 4, 5, 6]
+        for (int i = data.length - 1; 1 < i; i--) {
             if (data[i] > data[i - 1]) {
                 return false;
             }
@@ -116,27 +115,27 @@ public class QuiksortTwoP {
             return;
         }
         assert !isSorted(data);
-            Instant start = Instant.now();
-            if (data.length < 20) {
-                System.out.println("Liste vor dem Sortieren:" + Arrays.toString(data));
-                qsort(data);
-                System.out.println("Liste nach dem Sortieren:" + Arrays.toString(data));
-            } else {
-                qsort(data);
-            }
+        Instant start = Instant.now();
+        if (data.length < 20) {
+            System.out.println("Liste vor dem Sortieren:" + Arrays.toString(data));
+            qsort(data);
+            System.out.println("Liste nach dem Sortieren:" + Arrays.toString(data));
+        } else {
+            qsort(data);
+        }
 
-            Instant finish = Instant.now();
-            float time = Duration.between(start, finish).toMillis();
-            int Min = data[data.length - 1];
-            long Max = data[0];
-            long Med = 0;
-            for (int i = 0; i < data.length; i++) { // *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen
-                Med = data[i] + Med;
-            }
-            Med = Med / data.length; //*
-            System.out.println("Min: " + Min + ", " + "Med: " + Med + ", " + "Max: " + Max);
+        Instant finish = Instant.now();
+        float time = Duration.between(start, finish).toMillis();
+        int Min = data[data.length - 1]; //letzer element des arrays ist immer das kleinste element
+        long Max = data[0]; //der erste element ist immer das größte
+        long Med = 0;
+        for (int i = 0; i < data.length; i++) { // *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen
+            Med = data[i] + Med;
+        }
+        Med = Med / data.length; //*
+        System.out.println("Min: " + Min + ", " + "Med: " + Med + ", " + "Max: " + Max);
 
-            System.out.println("Zeit: " + time / 1000 + " Sekunden");
+        System.out.println("Zeit: " + time / 1000 + " Sekunden");
 
     }
 }
