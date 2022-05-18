@@ -38,7 +38,7 @@ public class countSort {
         return out;
     }
     public static void main(String[] args) {
-        int[] data = {1,4,1,2,7,5,2};
+        int[] data = {1,4,1,2,7,5,2,45,43,65,76,87,12,45,655,6,1};
         int min = getMin(data);
         int max  = getMax(data);
         System.out.println("The minimum value is: "+getMin(data));
