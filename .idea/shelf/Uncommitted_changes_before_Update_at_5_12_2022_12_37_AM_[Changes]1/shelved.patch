@@ -1,0 +1,398 @@
+Index: src/Frequezcounter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Frequezcounter.java b/src/Frequezcounter.java
+new file mode 100644
+--- /dev/null	
++++ b/src/Frequezcounter.java	
+@@ -0,0 +1,59 @@
++import java.util.Arrays;
++
++public class Frequezcounter {
++    public static int getMin(int[] data){
++        int min = data[0];
++        for (int i = 0; i < data.length; i++) {
++            if (data[i] < min){
++                min = data[i];
++            }
++        }
++        return min;
++    }
++    public static int getMax(int[] data){
++        int max = data[0];
++        for (int i = 0; i < data.length; i++) {
++            if (data[i] > max){
++                max = data[i];
++            }
++        }
++        return max;
++    }
++    public static int[] count(int[] A, int min, int max){
++        int[] C = new int[max - min + 1];
++        int counter = 0;
++        for (int i = 0; i < A.length-1; i++) {
++
++            if (A[i] == i + min){
++                counter++;
++                C[i] = counter;
++            }
++
++            counter = 0;
++        }
++        return C;
++    }
++    public static int[] counts(int[] A, int min, int max){
++        int[] C = new int[max - min
++        1];
++        for (int i = 0; i < A.length; i++) {
++            C[A[i]-1]++;
++        }
++        return C;
++    }
++       public static int[] countFreqeuncy(int[] A, int min, int max){
++        int[] C = new int[max - min + 1];
++        for (int i = 0; i < A.length; i++) {
++            if (A[i] >= min && A[i] <= max){
++                C[A[i] - min]++;
++            }
++        }
++        return C;
++    }
++
++    public static void main(String[] args) {
++        int[] data = {1,2,3,4,1,2,3,4,5,6,7};
++        int min = getMin(data);
++        int max  = getMax(data);
++        System.out.println(Arrays.toString(countFreqeuncy(data, min, max)));}
++}
+Index: src/smallestSubset.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/smallestSubset.java b/src/smallestSubset.java
+new file mode 100644
+--- /dev/null	
++++ b/src/smallestSubset.java	
+@@ -0,0 +1,66 @@
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.Scanner;
++
++public class smallestSubset {
++    public static void find(ArrayList<Integer> data, int k) {
++        if (data.size() == 1) { //Basis Element für 1 elementige Listen wird als abbruchkriterium benutzt
++            System.out.println(data.get(0));
++        } else {
++            int i = (k - 1) / (fakultät(data.size() - 1));
++            int kn = k - i * (fakultät(data.size() - 1));
++            System.out.print(data.get(i) + " "); // Ausgabe des ersten Elements
++            data.remove(i); //da die kleinste i te  stelle ermittelt worden ist kann man sie aus der liste entfernen, damit es keinen stackoverflow gibt
++            find(data, kn); //rekusiver Aufruf für das nächste Element
++        }
++    }
++
++    public static int fakultät(int k) { //berechnet die Fakultät
++        if (k == 0) {
++            return 1;
++        }
++        return k * fakultät(k - 1);
++    }
++
++    public static void main(String[] args) {
++        if (args.length != 1) { // die Eingabe wird auf einem einzigen Argument geprüft
++            System.out.println("Exactly one arguments are required.");
++            return;
++        }
++        int smallest;
++        try {// versucht die Eingabe zu einer Zahl zu konvertieren
++            smallest = Integer.parseInt(args[0]);
++        } catch (NumberFormatException e) { // fängt NumberFormatException ab, wenn die Eingabe Integer Wert ist
++            System.out.println("The arguments must be integers.");
++            return;
++        }
++        if (smallest <= 0) {
++            throw new IllegalArgumentException("Die kleinste Zahl kann nicht kleiner oder gleich als Null sein");
++        }
++        Scanner scanner = new Scanner(System.in);
++        ArrayList<Integer> list = new ArrayList<>();
++        try {
++            while (scanner.hasNextLine()) { // liest die eingabe ein
++                String input = scanner.nextLine();
++                if (input.equals("")) { // wenn die eingabe leer ist, wird die ausgabe erstellt und geht aus der schleife raus
++                    break;
++                }
++                list.add(Integer.parseInt(input)); // addiert die eingabe zur liste
++            }
++        } catch (NumberFormatException e) { // fängt NumberFormatException ab, wenn die Eingabe Integer Wert ist
++            System.err.println("Der Input was kein Integer Wert.");
++            return;
++        }
++        int[] arr = new int[list.size()]; // Erstellt ein Array mit der Länge der Arraylist
++        for (int i = 0; i < arr.length; i++) { // Füllt das Array mit den Elementen aus der Arraylist
++            arr[i] = list.get(i);
++        }
++        Arrays.sort(arr); // Sortiert das Array
++
++        System.out.println("Sorted input: ");
++        System.out.println(Arrays.toString(arr));
++        System.out.println();
++        System.out.println("The " + smallest + "-smallest permutation is: ");
++        find(list, smallest);
++    }
++}
+Index: src/QuiksortTwoP.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.time.Duration;\r\nimport java.time.Instant;\r\nimport java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.Scanner;\r\n\r\npublic class QuiksortTwoP {\r\n    public static int[] partition(int[] data, int p1, int p2) {\r\n        int temp1;\r\n        int temp2;\r\n        int[] arr = new int[2];\r\n        temp1 = data[p1];\r\n        temp2 = data[p1 + 1];\r\n        for (int i = p1; i < data.length - 1; i++) {                                    //Partitionierung beginnt hier\r\n            if (data[p1] < data[i]) {                                            //Elemente finden die größer als das Pivot sind\r\n                data[p1] = data[i];                                            //\r\n                int j = p1 + 1;\r\n                while (j < i + 1) {                                                //Alles in der While-Schleife ist um die Elemente im Array zu verschieben zu der Stelle die hinter das Pivot gekommen ist\r\n                    data[j] = temp1;                                            //Mit Hilfe von temp1 und temp2 die die nächsten Werte speichern wir das Array verschoben\r\n                    temp1 = temp2;\r\n                    temp2 = data[j + 1];\r\n                    j++;\r\n                }\r\n                p1++;                                                        //Pivot bekommt einen neuen Index indem man l erhöht\r\n                temp1 = data[p1];//Die Temporären Ints werden auf den neuen Index des Pivot angepasst\r\n\r\n                temp2 = data[p1 + 1];\r\n            }\r\n        }\r\n        int rw = p2;\r\n        for (int i = 0; i < p2; i++) {                                        //Partitionierung beginnt hier\r\n            if (data[p2] > data[i]) {                                    //Es wird nach Elementen gesucht die kleiner als der Pivot sind\r\n                temp1 = data[rw];\r\n                data[rw] = data[i];\r\n                temp2 = data[rw - 1];\r\n                for (int j = rw - 1; j > i - 1; j--) {                            //Hier wird der Array nach rechts verschoben zu der Stelle die hinter das pivot gekommen ist\r\n                    data[j] = temp1;\r\n                    temp1 = temp2;\r\n                    if (j - 1 >= 1) {\r\n                        temp2 = data[j - 1];\r\n                    }\r\n                }\r\n                p2--;                                                //Index des Pivots wird verschoben da der Pivot verschoben ist\r\n\r\n            }\r\n        }\r\n        arr[0] = p1;\r\n        arr[1] = p2;\r\n        return arr;\r\n    }\r\n\r\n    public static void ArraytoString(int[] data) {\r\n        for (int i = 0; i < data.length; i++) {\r\n            System.out.print(data[i] + \" \");\r\n        }\r\n    }\r\n\r\n    public static void qsort(int data[], int l, int r) {\r\n\r\n        if (l < r) {\r\n\r\n            int[] m = partition(data, l, r);\r\n            if (m[0] == l && m[1] == r) {\r\n                if (m[0] + 1 == m[1]) {\r\n                    if (data[l] < data[r]) {\r\n                        int temp = data[l];\r\n                        data[l] = data[r];\r\n                        data[r] = temp;\r\n                    }\r\n                } else {\r\n                    qsort(data, m[0] + 1, m[1] - 1);\r\n                }\r\n            } else {\r\n                qsort(data, l, m[0] - 1);\r\n                qsort(data, m[0] + 1, m[1] - 1);\r\n                qsort(data, m[1] + 1, r);\r\n            }\r\n        }\r\n    }\r\n\r\n    public static void qsort(int data[]) {\r\n        qsort(data, 0, data.length - 1);\r\n    }\r\n\r\n    public static boolean isSorted(int[] data) {\r\n        for (int i = data.length - 1; 1 < i; i--) { //[1, 2, 3, 4, 5, 6]\r\n            if (data[i] > data[i - 1]) {\r\n                return false;\r\n            }\r\n        }\r\n        return true;\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        Scanner scanner = new Scanner(System.in);\r\n        ArrayList<Integer> list = new ArrayList<>();\r\n        try {\r\n            while (scanner.hasNextLine()) { // liest die eingabe ein\r\n                String input = scanner.nextLine();\r\n                if (input.equals(\"\")) { // wenn die eingabe leer ist, wird die ausgabe erstellt und geht aus der schleife raus\r\n                    break;\r\n                }\r\n                list.add(Integer.parseInt(input)); // addiert die eingabe zur liste\r\n            }\r\n        } catch (NumberFormatException e) { // fängt NumberFormatException ab, wenn die Eingabe Integer Wert ist\r\n            System.err.println(\"Der Input was kein Integer Wert.\");\r\n            return;\r\n        }\r\n        int[] data = new int[list.size()];  // erstellt ein Array mit der Länge der Liste\r\n        for (int i = 0; i < list.size(); i++) { // füllt das Array mit den Werten aus der Liste\r\n            data[i] = list.get(i);\r\n        }\r\n\r\n        if (isSorted(data)) { // prüft ob das Array sortiert ist und der Methoden durschgang wird gespart\r\n            System.out.println(\"Array ist schon sortiert\");\r\n            return;\r\n        }\r\n        assert !isSorted(data);\r\n            Instant start = Instant.now();\r\n            if (data.length < 20) {\r\n                System.out.println(\"Liste vor dem Sortieren:\" + Arrays.toString(data));\r\n                qsort(data);\r\n                System.out.println(\"Liste nach dem Sortieren:\" + Arrays.toString(data));\r\n            } else {\r\n                qsort(data);\r\n            }\r\n\r\n            Instant finish = Instant.now();\r\n            float time = Duration.between(start, finish).toMillis();\r\n            int Min = data[data.length - 1];\r\n            long Max = data[0];\r\n            long Med = 0;\r\n            for (int i = 0; i < data.length; i++) { // *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen\r\n                Med = data[i] + Med;\r\n            }\r\n            Med = Med / data.length; //*\r\n            System.out.println(\"Min: \" + Min + \", \" + \"Med: \" + Med + \", \" + \"Max: \" + Max);\r\n\r\n            System.out.println(\"Zeit: \" + time / 1000 + \" Sekunden\");\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/QuiksortTwoP.java b/src/QuiksortTwoP.java
+--- a/src/QuiksortTwoP.java	
++++ b/src/QuiksortTwoP.java	
+@@ -12,7 +12,7 @@
+         temp1 = data[p1];
+         temp2 = data[p1 + 1];
+         for (int i = p1; i < data.length - 1; i++) {                                    //Partitionierung beginnt hier
+-            if (data[p1] < data[i]) {                                            //Elemente finden die größer als das Pivot sind
++            if (data[p1] < data[i]) {             //Elemente finden die größer als das Pivot sind
+                 data[p1] = data[i];                                            //
+                 int j = p1 + 1;
+                 while (j < i + 1) {                                                //Alles in der While-Schleife ist um die Elemente im Array zu verschieben zu der Stelle die hinter das Pivot gekommen ist
+@@ -29,9 +29,9 @@
+         }
+         int rw = p2;
+         for (int i = 0; i < p2; i++) {                                        //Partitionierung beginnt hier
+-            if (data[p2] > data[i]) {                                    //Es wird nach Elementen gesucht die kleiner als der Pivot sind
++            if (data[p2] > data[i]) {
++                data[rw] = data[i];                                  //Es wird nach Elementen gesucht die kleiner als der Pivot sind
+                 temp1 = data[rw];
+-                data[rw] = data[i];
+                 temp2 = data[rw - 1];
+                 for (int j = rw - 1; j > i - 1; j--) {                            //Hier wird der Array nach rechts verschoben zu der Stelle die hinter das pivot gekommen ist
+                     data[j] = temp1;
+@@ -56,21 +56,20 @@
+     }
+ 
+     public static void qsort(int data[], int l, int r) {
+-
+-        if (l < r) {
+-
+-            int[] m = partition(data, l, r);
+-            if (m[0] == l && m[1] == r) {
+-                if (m[0] + 1 == m[1]) {
+-                    if (data[l] < data[r]) {
++        if (l < r) {								//Rekursionsanker wenn die beiden Pivots gleich gewählt werden dann wird abgebrochen
++            int[] m = partition(data, l, r);		//Erste partition um m1 und m2 zu bekommen
++            if (m[0] == l && m[1] == r) {			//Wenn schon alles sortiert ist und m1 und m2 sich nicht ändern
++                if (m[0] + 1 == m[1]) {				//Dann wird sich einmal angeguckt ob m1 und m2 nebeneinander sind
++                    if (data[l] < data[r]) {		//Wenn das ebenfalls der fall ist dann werden die pivots miteinander verglichen falls der eine größer als der andere ist werden sie vertauscht
+                         int temp = data[l];
+                         data[l] = data[r];
+                         data[r] = temp;
+                     }
+-                } else {
++                } else {							//Sonst werden einfach die Elemente zwischen den Pivots partitioniert
+                     qsort(data, m[0] + 1, m[1] - 1);
+                 }
+-            } else {
++            }
++            else {									//Partitionierung der 3 Intervalle
+                 qsort(data, l, m[0] - 1);
+                 qsort(data, m[0] + 1, m[1] - 1);
+                 qsort(data, m[1] + 1, r);
+@@ -83,7 +82,7 @@
+     }
+ 
+     public static boolean isSorted(int[] data) {
+-        for (int i = data.length - 1; 1 < i; i--) { //[1, 2, 3, 4, 5, 6]
++        for (int i = data.length - 1; 1 < i; i--) {
+             if (data[i] > data[i - 1]) {
+                 return false;
+             }
+@@ -116,27 +115,27 @@
+             return;
+         }
+         assert !isSorted(data);
+-            Instant start = Instant.now();
+-            if (data.length < 20) {
+-                System.out.println("Liste vor dem Sortieren:" + Arrays.toString(data));
+-                qsort(data);
+-                System.out.println("Liste nach dem Sortieren:" + Arrays.toString(data));
+-            } else {
+-                qsort(data);
+-            }
++        Instant start = Instant.now();
++        if (data.length < 20) {
++            System.out.println("Liste vor dem Sortieren:" + Arrays.toString(data));
++            qsort(data);
++            System.out.println("Liste nach dem Sortieren:" + Arrays.toString(data));
++        } else {
++            qsort(data);
++        }
+ 
+-            Instant finish = Instant.now();
+-            float time = Duration.between(start, finish).toMillis();
+-            int Min = data[data.length - 1];
+-            long Max = data[0];
+-            long Med = 0;
+-            for (int i = 0; i < data.length; i++) { // *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen
+-                Med = data[i] + Med;
+-            }
+-            Med = Med / data.length; //*
+-            System.out.println("Min: " + Min + ", " + "Med: " + Med + ", " + "Max: " + Max);
++        Instant finish = Instant.now();
++        float time = Duration.between(start, finish).toMillis();
++        int Min = data[data.length - 1]; //letzer element des arrays ist immer das kleinste element
++        long Max = data[0]; //der erste element ist immer das größte
++        long Med = 0;
++        for (int i = 0; i < data.length; i++) { // *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen
++            Med = data[i] + Med;
++        }
++        Med = Med / data.length; //*
++        System.out.println("Min: " + Min + ", " + "Med: " + Med + ", " + "Max: " + Max);
+ 
+-            System.out.println("Zeit: " + time / 1000 + " Sekunden");
++        System.out.println("Zeit: " + time / 1000 + " Sekunden");
+ 
+     }
+ }
+\ No newline at end of file
+Index: src/Quiksort.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.time.Duration;\r\nimport java.time.Instant;\r\nimport java.util.Scanner;\r\n\r\npublic class Quiksort {\r\n    public static int partition(int[] data, int l, int r) {\r\n        int temp1 = data[l];                                                    // temp1 und temp2 werden deklariert um mit diesen später elemente im array verschieben zu können\r\n        int temp2 = data[l + 1];\r\n        if (l >= r) {                                                        //Wie in der aufgabe gewollt wenn l>=r ist heisst es das es schon sortiert ist und wird wieder zurückgegeben\r\n            return l;\r\n        }\r\n        if (l < 0) {\r\n            throw new IllegalArgumentException(\"l ist kleiner als 0\");\r\n        }\r\n        if (r > data.length - 1) {                                                //Out of bounds\r\n            throw new IllegalArgumentException(\"r ist größer als die Länge des Arrays\");\r\n        }\r\n        for (int i = l; i < r; i++) {                                                //Partitionierung beginnt hier\r\n            if (data[l] < data[i]) {                                            //Elemente finden die größer als das Pivot sind\r\n                data[l] = data[i];                                            //\r\n                int j = l + 1;\r\n                while (j < i + 1) {                                                //Alles in der While-Schleife ist um die Elemente im Array zu verschieben zu der Stelle die hinter das Pivot gekommen ist\r\n                    data[j] = temp1;\r\n                    temp1 = temp2;\r\n                    temp2 = data[j + 1];\r\n                    j++;\r\n                }\r\n                l++;                                                        //Pivot bekommt einen neuen Index indem man l erhöht\r\n                temp1 = data[l];                                                //Die Temporären Ints werden auf den neuen Index des Pivot angepasst\r\n                temp2 = data[l + 1];\r\n            }\r\n            if (l == r - 1 && data[l] < data[r]) {                                    //Diese if-Verzweigung macht den letzten Schritt falls das letzte\r\n                for (int q = 0; q < r; q++) {                                        //Element nicht das kleinste ist wird es an seine Stelle gebracht und der\r\n                    if (data[r] > data[q]) {                                    //rest wird wieder mit einer while-Schleife verschoben\r\n                        int tempe = data[q];\r\n                        int tempe1 = 0;\r\n                        data[q] = data[r];\r\n                        while (q < r) {\r\n                            tempe1 = data[q + 1];\r\n                            data[q + 1] = tempe;\r\n                            tempe = tempe1;\r\n                            q++;\r\n                        }\r\n\r\n                    }\r\n                }\r\n            }\r\n        }\r\n        return l;\r\n    }\r\n\r\n    public static int ArraytoString(int[] data) {\r\n        for (int i = 0; i < data.length; i++) {\r\n            System.out.print(data[i] + \" \");\r\n        }\r\n        return 0;\r\n    }\r\n\r\n    public static void qsort(int[] data, int l, int r) {\r\n        if (l < r) {                                            //Rekursions-Anker\r\n            int m = partition(data, l, r);                        //Den Index des Pivots bekommen nach der ersten Partitionierung\r\n            qsort(data, l, m - 1);                                //Linke und Rechte seite aufteilen und Partitionieren\r\n            qsort(data, m + 1, r);\r\n        }\r\n    }\r\n\r\n    public static boolean isSorted(int[] data) {\r\n        for (int i = data.length - 1; 1 < i; i--) { //[1, 2, 3, 4, 5, 6]\r\n            if (data[i] > data[i - 1]) {\r\n                return false;\r\n            }\r\n        }\r\n        return true;\r\n    }\r\n\r\n    public static void qsort(int[] data) {\r\n        int m = partition(data, 0, data.length - 1);\r\n        qsort(data, 0, m);                                    //Einfach Rekursive Partitionierung wie in b) aber l=0 und r=data.length-1\r\n        qsort(data, m + 1, data.length - 1);\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        Scanner scanner = new Scanner(System.in);   //Scanner für die Eingabe\r\n        ArrayList<Integer> list = new ArrayList<>(); //wird mit den eingaben gefüllt\r\n        try {\r\n            while (scanner.hasNextLine()) { // liest die eingabe ein\r\n                String input = scanner.nextLine();\r\n                if (input.equals(\"\")) { // wenn die eingabe leer ist, wird die ausgabe erstellt und geht aus der schleife raus\r\n                    break;\r\n                }\r\n                list.add(Integer.parseInt(input)); // addiert die eingabe zur liste\r\n            }\r\n        } catch (NumberFormatException e) { // fängt NumberFormatException ab, wenn die Eingabe Integer Wert ist\r\n            System.err.println(\"Der Input was kein Integer Wert.\");\r\n            return;\r\n        }\r\n        int[] data = new int[list.size()]; //alle Werte der Liste werden in ein Array geschrieben\r\n        for (int i = 0; i < list.size(); i++) {\r\n            data[i] = list.get(i);\r\n        }\r\n\r\n        if (isSorted(data)) {\r\n            System.out.println(\"Array ist schon sortiert\");\r\n            return;\r\n        }\r\n        assert !isSorted(data);\r\n            Instant start = Instant.now();                  //Startzeit\r\n            if (data.length < 20) {    //wenn die Länge des Arrays kleiner als 20 ist, wird die qsort-Methode aufgerufen und vor- und nach der sortierung ausgedruckt\r\n                System.out.println(\"Liste vor dem Sortieren:\" + Arrays.toString(data));\r\n                qsort(data);\r\n                System.out.println(\"Liste nach dem Sortieren:\" + Arrays.toString(data));\r\n            } else {\r\n                qsort(data);\r\n            }\r\n            assert isSorted(data);  //assertion, ob das Array sortiert ist\r\n            Instant finish = Instant.now(); //Endzeit\r\n            float time = Duration.between(start, finish).toMillis();\r\n            int Min = data[data.length - 1]; //letzter Wert des Arrays ist auch der kleinste Wert nachdem sortiert wurde\r\n            long Max = data[0]; //erster Wert des Arrays ist auch der größte Wert nachdem sortiert wurde\r\n            long Med = 0;// *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen\r\n            for (int i = 0; i < data.length; i++) {\r\n                Med = data[i] + Med;\r\n            }\r\n            Med = Med / data.length; //*\r\n            System.out.println(\"Min: \" + Min + \", \" + \"Med: \" + Med + \", \" + \"Max: \" + Max);\r\n\r\n            System.out.println(\"Zeit: \" + time / 1000 + \" Sekunden\"); //Zeit in Sekunden\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Quiksort.java b/src/Quiksort.java
+--- a/src/Quiksort.java	
++++ b/src/Quiksort.java	
+@@ -6,9 +6,9 @@
+ 
+ public class Quiksort {
+     public static int partition(int[] data, int l, int r) {
+-        int temp1 = data[l];                                                    // temp1 und temp2 werden deklariert um mit diesen später elemente im array verschieben zu können
++        int temp1 = data[l];      // temp1 und temp2 werden deklariert um mit diesen später elemente im array verschieben zu können
+         int temp2 = data[l + 1];
+-        if (l >= r) {                                                        //Wie in der aufgabe gewollt wenn l>=r ist heisst es das es schon sortiert ist und wird wieder zurückgegeben
++        if (l >= r) {   //Wie in der aufgabe gewollt wenn l>=r ist heisst es das es schon sortiert ist und wird wieder zurückgegeben
+             return l;
+         }
+         if (l < 0) {
+@@ -17,27 +17,28 @@
+         if (r > data.length - 1) {                                                //Out of bounds
+             throw new IllegalArgumentException("r ist größer als die Länge des Arrays");
+         }
+-        for (int i = l; i < r; i++) {                                                //Partitionierung beginnt hier
+-            if (data[l] < data[i]) {                                            //Elemente finden die größer als das Pivot sind
+-                data[l] = data[i];                                            //
+-                int j = l + 1;
+-                while (j < i + 1) {                                                //Alles in der While-Schleife ist um die Elemente im Array zu verschieben zu der Stelle die hinter das Pivot gekommen ist
+-                    data[j] = temp1;
++
++        for (int i = l; i < r; i++) {          //Partitionierung beginnt hier
++            if (data[l] < data[i]) {           //Elemente finden die größer als das Pivot sind
++                data[l] = data[i];             //pivot wird vom wert ersetzt der größer als das pivat ist
++                int j = l + 1;                 //nach dem ersetzt braucht man die zahl die nach dem pivot steht damit wir die zu der stelle verschieben könne die wir aus getauscht haben
++                while (j < i + 1) {//Alles in der While-Schleife ist um die Elemente im Array zu verschoben zu der Stelle die hinter das Pivot gekommen ist
++                    data[j] = temp1;//nach rechts
+                     temp1 = temp2;
+-                    temp2 = data[j + 1];
++                    temp2 = data[j + 1]; //das element wird für den nächsten swap gespeichert
+                     j++;
+                 }
+-                l++;                                                        //Pivot bekommt einen neuen Index indem man l erhöht
+-                temp1 = data[l];                                                //Die Temporären Ints werden auf den neuen Index des Pivot angepasst
++                l++;                              //Pivot bekommt einen neuen Index indem man l erhöht
++                temp1 = data[l];                 //Die Temporären Ints werden auf den neuen Index des Pivot angepasst
+                 temp2 = data[l + 1];
+             }
+-            if (l == r - 1 && data[l] < data[r]) {                                    //Diese if-Verzweigung macht den letzten Schritt falls das letzte
+-                for (int q = 0; q < r; q++) {                                        //Element nicht das kleinste ist wird es an seine Stelle gebracht und der
+-                    if (data[r] > data[q]) {                                    //rest wird wieder mit einer while-Schleife verschoben
+-                        int tempe = data[q];
+-                        int tempe1 = 0;
++            if (l == r - 1 && data[l] < data[r]) {         //Diese if-Verzweigung macht den letzten Schritt falls das letzte
++                for (int q = 0; q < r; q++) {              //Element nicht das kleinste ist wird es an seine Stelle gebracht und der
++                    if (data[r] > data[q]) {               //rest wird wieder mit einer while-Schleife verschoben hinter r
++                        int tempe = data[q];               //durch gegangen und ander richtigenstelle gebracht
++                        int tempe1;
+                         data[q] = data[r];
+-                        while (q < r) {
++                        while (q < r) {                    //array wird um eine stelle verschoben
+                             tempe1 = data[q + 1];
+                             data[q + 1] = tempe;
+                             tempe = tempe1;
+@@ -51,18 +52,11 @@
+         return l;
+     }
+ 
+-    public static int ArraytoString(int[] data) {
+-        for (int i = 0; i < data.length; i++) {
+-            System.out.print(data[i] + " ");
+-        }
+-        return 0;
+-    }
+-
+     public static void qsort(int[] data, int l, int r) {
+         if (l < r) {                                            //Rekursions-Anker
+             int m = partition(data, l, r);                        //Den Index des Pivots bekommen nach der ersten Partitionierung
+             qsort(data, l, m - 1);                                //Linke und Rechte seite aufteilen und Partitionieren
+-            qsort(data, m + 1, r);
++            qsort(data, m + 1, r);                                  //die Hälften werden partitioniert
+         }
+     }
+ 
+@@ -106,26 +100,27 @@
+             return;
+         }
+         assert !isSorted(data);
+-            Instant start = Instant.now();                  //Startzeit
+-            if (data.length < 20) {    //wenn die Länge des Arrays kleiner als 20 ist, wird die qsort-Methode aufgerufen und vor- und nach der sortierung ausgedruckt
+-                System.out.println("Liste vor dem Sortieren:" + Arrays.toString(data));
+-                qsort(data);
+-                System.out.println("Liste nach dem Sortieren:" + Arrays.toString(data));
+-            } else {
+-                qsort(data);
+-            }
+-            assert isSorted(data);  //assertion, ob das Array sortiert ist
+-            Instant finish = Instant.now(); //Endzeit
+-            float time = Duration.between(start, finish).toMillis();
+-            int Min = data[data.length - 1]; //letzter Wert des Arrays ist auch der kleinste Wert nachdem sortiert wurde
+-            long Max = data[0]; //erster Wert des Arrays ist auch der größte Wert nachdem sortiert wurde
+-            long Med = 0;// *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen
+-            for (int i = 0; i < data.length; i++) {
+-                Med = data[i] + Med;
+-            }
+-            Med = Med / data.length; //*
+-            System.out.println("Min: " + Min + ", " + "Med: " + Med + ", " + "Max: " + Max);
++        Instant start = Instant.now();                  //Startzeit
++        if (data.length < 20) {    //wenn die Länge des Arrays kleiner als 20 ist, wird die qsort-Methode aufgerufen und vor- und nach der sortierung ausgedruckt
++            System.out.println("Liste vor dem Sortieren:" + Arrays.toString(data));
++            qsort(data);
++            System.out.println("Liste nach dem Sortieren:" + Arrays.toString(data));
++        } else {
++            qsort(data);
++        }
++        Instant finish = Instant.now();
++        assert isSorted(data);  //assertion, ob das Array sortiert ist
++         //Endzeit
++        float time = Duration.between(start, finish).toMillis();
++        int Min = data[data.length - 1]; //letzter Wert des Arrays ist auch der kleinste Wert nachdem sortiert wurde
++        long Max = data[0]; //erster Wert des Arrays ist auch der größte Wert nachdem sortiert wurde
++        long Med = 0;// *findet den mittelwert in dem man den durchschnitt berechnet der Zahlen die im Array liegen
++        for (int i = 0; i < data.length; i++) {
++            Med = data[i] + Med;
++        }
++        Med = Med / data.length; //*
++        System.out.println("Min: " + Min + ", " + "Med: " + Med + ", " + "Max: " + Max);
+ 
+-            System.out.println("Zeit: " + time / 1000 + " Sekunden"); //Zeit in Sekunden
++        System.out.println("Zeit: " + time / 1000 + " Sekunden"); //Zeit in Sekunden
+     }
+ }
+\ No newline at end of file

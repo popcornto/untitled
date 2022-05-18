@@ -1,0 +1,739 @@
+Index: src/Array.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.Scanner;\r\n\r\npublic class Array {\r\n    public static void main(String[] args) {\r\n        if (args.length != 1) { // die Eingabe wird auf einem einzigen Argument geprüft\r\n            System.out.println(\"Exactly one arguments are required.\");\r\n            return;\r\n        }\r\n        int k = 0; // k is the number of elements in the array\r\n        try {// versucht die Eingabe zu einer Zahl zu konvertieren\r\n            k = Integer.parseInt(args[0]);\r\n        } catch (NumberFormatException e) { // fängt NumberFormatException ab, wenn die Eingabe Integer Wert ist\r\n            System.out.println(\"The arguments must be integers.\");\r\n            return;\r\n        }\r\n\r\n        Scanner scanner = new Scanner(System.in);\r\n        ArrayList<Integer> list = new ArrayList<>();\r\n        try {\r\n            while (scanner.hasNextLine()) { // liest die eingabe ein\r\n                String input = scanner.nextLine();\r\n                if (input.equals(\"\")) { // wenn die eingabe leer ist, wird die ausgabe erstellt und geht aus der schleife raus\r\n                    break;\r\n                }\r\n                list.add(Integer.parseInt(input)); // addiert die eingabe zur liste\r\n            }\r\n        } catch (NumberFormatException e) { // fängt NumberFormatException ab, wenn die Eingabe Integer Wert ist\r\n            System.err.println(\"Der Input was kein Integer Wert.\");\r\n            return;\r\n        }\r\n\r\n\r\n        if (list.size() < k) { // Überprüft ob k kleiner als die Anzahl der Elemente ist, da sonst der Index außerhalb des Arrays liegt\r\n            System.out.println(\"Der Array muss mindestens \" + k + \" Werte haben. \");\r\n            return;\r\n        } else {\r\n            int[] arr = new int[list.size()]; // Erstellt ein Array mit der Länge der Arraylist\r\n            for (int i = 0; i < arr.length-1 ; i++) { // Füllt das Array mit den Elementen aus der Arraylist\r\n                arr[i] = list.get(i);\r\n            }\r\n            Arrays.sort(arr); // Sortiert das Array, da wir dann mit k den kleinsten element schneller und effizienter suchen können\r\n            System.out.println(\"Der \" + k + \".\" + \" kleinste Wert ist \" + arr[k]);\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Array.java b/src/Array.java
+--- a/src/Array.java	(revision 68088c0c264f6798948347324416eadfae8db08d)
++++ b/src/Array.java	(date 1651012174410)
+@@ -8,7 +8,7 @@
+             System.out.println("Exactly one arguments are required.");
+             return;
+         }
+-        int k = 0; // k is the number of elements in the array
++        int k; // k is the number of elements in the array
+         try {// versucht die Eingabe zu einer Zahl zu konvertieren
+             k = Integer.parseInt(args[0]);
+         } catch (NumberFormatException e) { // fängt NumberFormatException ab, wenn die Eingabe Integer Wert ist
+@@ -16,10 +16,10 @@
+             return;
+         }
+ 
+-        Scanner scanner = new Scanner(System.in);
++        Scanner scanner = new Scanner(System.in); // liest die eingabe ein
+         ArrayList<Integer> list = new ArrayList<>();
+         try {
+-            while (scanner.hasNextLine()) { // liest die eingabe ein
++            while (scanner.hasNextLine()) {
+                 String input = scanner.nextLine();
+                 if (input.equals("")) { // wenn die eingabe leer ist, wird die ausgabe erstellt und geht aus der schleife raus
+                     break;
+@@ -36,12 +36,14 @@
+             System.out.println("Der Array muss mindestens " + k + " Werte haben. ");
+             return;
+         } else {
++
+             int[] arr = new int[list.size()]; // Erstellt ein Array mit der Länge der Arraylist
+-            for (int i = 0; i < arr.length-1 ; i++) { // Füllt das Array mit den Elementen aus der Arraylist
++            for (int i = 0; i < arr.length ; i++) { // Füllt das Array mit den Elementen aus der Arraylist
+                 arr[i] = list.get(i);
+             }
+             Arrays.sort(arr); // Sortiert das Array, da wir dann mit k den kleinsten element schneller und effizienter suchen können
+-            System.out.println("Der " + k + "." + " kleinste Wert ist " + arr[k]);
+-        }
++
++            System.out.println("Der " + k + "." + " kleinste Wert ist " + arr[k-1]);}
++
+     }
+ }
+\ No newline at end of file
+Index: src/toArray.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.Scanner;\r\n\r\npublic class toArray {\r\n    public static void main(String[] args) {\r\n        Scanner scanner = new Scanner(System.in);\r\n        ArrayList<Integer> list = new ArrayList<>();\r\n        try {\r\n            while (scanner.hasNextLine()) {// liest die eingabe ein des benutzers\r\n                String input = scanner.nextLine();\r\n                if (input.equals(\"\")) {\r\n                    break;\r\n                }\r\n                list.add(Integer.parseInt(input));\r\n            }\r\n        } catch (NumberFormatException e) {\r\n            System.err.println(\"U GEY\");\r\n            return;\r\n        }\r\n\r\n        if (list.size() > 0) {\r\n            int[] arr = new int[list.size()];\r\n            for (int i = 0; i < list.size(); i++) {\r\n                arr[i] = list.get(i);\r\n            }\r\n\r\n            for (int Element : arr) {\r\n                System.out.print(Element);\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/toArray.java b/src/toArray.java
+--- a/src/toArray.java	(revision 68088c0c264f6798948347324416eadfae8db08d)
++++ b/src/toArray.java	(date 1651012174446)
+@@ -3,29 +3,29 @@
+ 
+ public class toArray {
+     public static void main(String[] args) {
+-        Scanner scanner = new Scanner(System.in);
+-        ArrayList<Integer> list = new ArrayList<>();
++        Scanner scanner = new Scanner(System.in); // liest die eingabe ein des benutzers
++        ArrayList<Integer> list = new ArrayList<>(); // erstellt eine neue ArrayList, die später die eingabe speichert
+         try {
+-            while (scanner.hasNextLine()) {// liest die eingabe ein des benutzers
++            while (scanner.hasNextLine()) {  // solange es einen neue wert gibt der eingegeben werden muss wird auf der eingabe des benutzers gewartet
+                 String input = scanner.nextLine();
+-                if (input.equals("")) {
++                if (input.equals("")) { // wenn der benutzer ein leerer string eingegeben hat, wird die while schleife beendet und eine ausgabe wird erzeugt
+                     break;
+                 }
+-                list.add(Integer.parseInt(input));
++                list.add(Integer.parseInt(input)); // wenn der benutzer einen wert eingegeben hat, wird dieser in die ArrayList gespeichert
+             }
+-        } catch (NumberFormatException e) {
+-            System.err.println("U GEY");
++        } catch (NumberFormatException e) {     // überprüft ob der benutzer einen Interger eingegeben hat
++            System.err.println("Es wurde keine Zahl eingegeben");
+             return;
+         }
+ 
+-        if (list.size() > 0) {
++        if (list.size() > 0) { // wenn die ArrayList nicht leer ist, wird die ArrayList in ein Array umgewandelt und dann ausgegeben
+             int[] arr = new int[list.size()];
+-            for (int i = 0; i < list.size(); i++) {
++            for (int i = 0; i < list.size(); i++) { // setzt die einzelnen werte der liste an den selben stellen in das Array ein
+                 arr[i] = list.get(i);
+             }
+ 
+-            for (int Element : arr) {
+-                System.out.print(Element);
++            for (int Element : arr) { // gibt die einzelnen werte des Arrays aus
++                System.out.print(Element + " ");
+             }
+         }
+     }
+Index: src/enumiration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.Scanner;\r\n\r\npublic class enumiration {\r\n    public static void main(String[] args) {\r\n        Scanner scanner = new Scanner(System.in);\r\n        ArrayList<Integer> list = new ArrayList<>();\r\n        try {\r\n            while (scanner.hasNextLine()) { // liest die eingabe ein\r\n                String input = scanner.nextLine();\r\n                if (input.equals(\"\")) { // wenn die eingabe leer ist, wird die ausgabe erstellt und geht aus der schleife raus\r\n                    break;\r\n                }\r\n                list.add(Integer.parseInt(input)); // addiert die eingabe zur liste\r\n            }\r\n        } catch (NumberFormatException e) { // fängt NumberFormatException ab, wenn die Eingabe Integer Wert ist\r\n            System.err.println(\"Der Input was kein Integer Wert.\");\r\n            return;\r\n        }\r\n        int[] data = new int[list.size()]; // Erstellt ein Array mit der Länge der Arraylist\r\n        for (int i = 0; i < data.length; i++) { // Füllt das Array mit den Elementen aus der Arraylist\r\n            data[i] = list.get(i);\r\n        }\r\n        Arrays.sort(data);// sortiert das Array\r\n        System.out.println(Arrays.toString(data)); // gibt das Array aus\r\n        System.out.print(removeDuplicates2(data));// entfernt doppelte Elemente\r\n        System.out.println(Arrays.toString(data)); // gibt das Array aus\r\n    }\r\n\r\n\r\n    public static int removeDuplicates2(int[] data) {\r\n        int count = 0;\r\n        for (int i = 0; i < data.length - 1; i++) {\r\n            if (data[i] == data[i + 1]) {\r\n                data[i] = 0;\r\n                count++;\r\n            }\r\n        }\r\n        Arrays.sort(data);\r\n        int middle = data.length - count;\r\n        int middle1 = middle;\r\n        for (int i = 0; i < count; i++) {\r\n\r\n            if (data.length % 2 == 0) {\r\n                if (count != 0) {\r\n                    int temp = data[middle];\r\n                    data[middle] = data[i];\r\n                    data[i] = temp;\r\n                    middle++;\r\n                }\r\n            } else {\r\n                if (count != 0) {\r\n                    if (data[middle1] != data[i]) {\r\n                        int temp = data[middle1];\r\n                        data[middle1] = data[i];\r\n                        data[i] = temp;\r\n                        middle1++;\r\n                    }\r\n                }\r\n            }\r\n\r\n        }\r\n        for (int i = 0; i < count; i++) {\r\n            System.out.print(data[i] + \" \");\r\n        }\r\n        return count;\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/enumiration.java b/src/enumiration.java
+--- a/src/enumiration.java	(revision 68088c0c264f6798948347324416eadfae8db08d)
++++ b/src/enumiration.java	(date 1651012169094)
+@@ -24,10 +24,29 @@
+         }
+         Arrays.sort(data);// sortiert das Array
+         System.out.println(Arrays.toString(data)); // gibt das Array aus
+-        System.out.print(removeDuplicates2(data));// entfernt doppelte Elemente
++        System.out.println(removeDuplicates2(data));// entfernt doppelte Elemente
+         System.out.println(Arrays.toString(data)); // gibt das Array aus
+     }
+ 
++    public static int removeDuplicates(int[] data) {
++        int count = 0;
++        for (int i = 0; i < data.length - 1; i++) {
++            if (data[i] == data[i + 1]) {
++                count++;
++            }
++        }
++        int[] arr = new int[data.length - count];
++        int j = 0;
++        for (int i = 0; i < data.length - 1; i++) {
++            if (data[i] != data[i + 1] || i + 1 == data.length - 1) {
++                arr[j] = data[i];
++                j++;
++            }
++        }
++        System.out.println("nach der leoschen der duplikate " + Arrays.toString(arr));
++        data = arr;
++        return arr.length;
++    }
+ 
+     public static int removeDuplicates2(int[] data) {
+         int count = 0;
+@@ -38,8 +57,8 @@
+             }
+         }
+         Arrays.sort(data);
+-        int middle = data.length - count;
+-        int middle1 = middle;
++        int middle = (data.length - count)-1;
++        int middle1 = middle + 1;
+         for (int i = 0; i < count; i++) {
+ 
+             if (data.length % 2 == 0) {
+@@ -51,6 +70,7 @@
+                 }
+             } else {
+                 if (count != 0) {
++
+                     if (data[middle1] != data[i]) {
+                         int temp = data[middle1];
+                         data[middle1] = data[i];
+@@ -61,10 +81,7 @@
+             }
+ 
+         }
+-        for (int i = 0; i < count; i++) {
+-            System.out.print(data[i] + " ");
+-        }
++        System.out.println(Arrays.toString(data));
+         return count;
+     }
+-
+ }
+\ No newline at end of file
+Index: src/enumearate.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/enumearate.java b/src/enumearate.java
+new file mode 100644
+--- /dev/null	(date 1651012174434)
++++ b/src/enumearate.java	(date 1651012174434)
+@@ -0,0 +1,149 @@
++import java.util.Arrays;
++import java.util.Scanner;
++import java.util.ArrayList;
++
++public class enumearate {
++
++    public static void main(String[] args) {
++        int[] data = readIn();
++        //int[] data =  {1,2,3,4,5};
++        int k = Integer.parseInt(args[0]);
++
++        System.out.print("Before removing duplicates: " +  Arrays.toString(data));
++        //printArrayToN(data, data.length - 1);
++
++
++        int n = removeDuplicates(data);
++
++        System.out.print("After removing duplicates: ");
++        //printArrayToN(data, n);
++
++
++        System.out.println("n'= " + n + " data length= " + data.length);
++
++        System.out.println("There are " + teilmengen(data, k, n) + " subsets.");
++
++
++    }
++
++    public static int removeDuplicates(int[] data) {
++        if (data.length == 0) {
++            return data.length - 1;
++        }
++        Arrays.sort(data);
++        System.out.println(Arrays.toString(data));
++        //End-Frame
++        int end2 = data.length - 1;
++        int end1 = data.length - 2;
++        //Anfangs-Frame
++        int i1 = 0;
++        int i2 = 1;
++
++        int res = data.length - 1;
++        int counter = 0;
++
++        while (i1 < end2) {
++            counter++;
++            //Fall1: doppelt am Ende
++            if (data[end1] == data[end2]) {
++                res--;
++                end1--;
++                end2--;
++            }
++            //Fall2: doppelt am Anfang und einfach am Ende: Tausch Ende2 und Anfang1
++            else if (data[i1] == data[i2] && data[end1] != data[end2]) {
++                // doppeltes hinter dem End-Frame
++                swap(data, end2, i1);
++                i1++;
++                i2++; // Anfang-Frame nach hinten verschieben
++                end1--;
++                end2--; //End-Frame nach vorne verschieben
++                res--;
++            }
++            //Fall3: vorne doppelt und hinten auch:
++            else if (data[i1] == data[i2]) {
++                end1--;
++                end2--; // End-Frame nach vorne verschieben
++
++            }
++            //keine doppelten hinten und keine doppelten vorne : vorne werden die nächsten beiden vergleichen
++            else if (data[end1] != data[end2] || data[i1] != data[i2]) {
++                i1++;
++                i2++;    // Anfangs-Frame nach hinten verschieben
++            }
++
++
++        }
++        System.out.println("iteration: " + counter);
++        System.out.println(Arrays.toString(data)+" :"+counter);
++        return res + 1;
++    }
++
++    public static int[] readIn() {
++        //Scanner wird für den Input-Stream benötigt
++        Scanner sc = new Scanner(System.in);
++        ArrayList<Integer> intList = new ArrayList<>();  //ArrayList zum zwischenspeichern der Integer-Werte
++
++
++        //Speichert Einagbe in ArrayList
++        while (sc.hasNext()) {
++            try {
++
++                intList.add(sc.nextInt());
++            } catch (Exception e) {
++                System.out.println("Sie haben keine Zahl eingegeben.");
++                System.out.println(e);
++                break;
++            }
++        }
++        //Speichert ArrayList-Werte in Array
++        int[] intArray = new int[intList.size()];
++        for (int i = 0; i < intList.size(); i++) {
++            intArray[i] = intList.get(i);
++        }
++
++        //for (int i = 0; i < intArray.length;i++)
++        //   System.out.print(intArray[i]+ ", ");
++        return intArray;
++    }
++
++    public static int teilmengen(int[] data, int k, int n) {
++        //Fehler nicht alle Teilmengen sind drin
++        int count = 1;
++        if (k > n)
++            System.out.println("ERROR: k is too large.");
++
++        else {
++            System.out.println("Permutationen");
++            printArrayToN(data, k);
++            for (int j = 0; j < k; j++) { // indizes von  0 bis k-1 werden mit indizes von k bis n-1 ausgetauscht
++                for (int i = k; i < n; i++) {
++                    swap(data, j, i);
++                    printArrayToN(data, k);
++                    count++;
++                }
++
++            }
++
++
++        }
++        return count;
++    }
++
++    public static void swap(int[] array, int j, int i) {
++        int h = array[i];
++        array[i] = array[j];
++        array[j] = h;
++    }
++
++    public static void printArrayToN(int[] data, int n) {
++        System.out.print("[");
++        if (n > 0) {
++            for (int i = 0; i < n - 1; i++)
++                System.out.print(data[i] + ",");
++            System.out.print(data[n - 1]);
++        }
++        System.out.println("]");
++    }
++}
++
+Index: src/permutation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.Scanner;\r\n\r\npublic class permutation {\r\n\r\n\r\n    public static int Permutation(int[] arr, int n) {\r\n        int count = 0; // permutations counter wird iniziallisiert mit 0 und wird bei jeder Permutation um 1 erhöht\r\n        if (n == arr.length - 1) {\r\n            for (int i = 0; i < arr.length; i++) {\r\n                System.out.print(arr[i] + \" \");\r\n\r\n            }\r\n\r\n            System.out.println();\r\n            return 1;\r\n\r\n        } else {\r\n            for (int i = n; i < arr.length; i++) {\r\n                swaparray(arr, n, i);\r\n                count += Permutation(arr, n + 1);\r\n                swaparray(arr, n, i);\r\n            }\r\n        }\r\n        return count;\r\n    }\r\n\r\n    public static void permutaionoflist() {\r\n        Scanner sc = new Scanner(System.in);\r\n        System.out.println(\"Enter the number of elements in the list\");\r\n        int n = sc.nextInt();\r\n        ArrayList<Integer> list = new ArrayList<Integer>();\r\n        System.out.println(\"Enter the elements\");\r\n        for (int i = 0; i < n; i++) {\r\n            list.add(sc.nextInt());\r\n        }\r\n        System.out.println(\"The permutation of the list is\");\r\n        System.out.println(\"Es gibt \" + permutation(list, 0) + \" Permutationen\");\r\n    }\r\n\r\n    public static int permutation(ArrayList<Integer> list, int k) {\r\n        int numberofpermutation = 0;\r\n        if (k == list.size() - 1) {\r\n            for (int i = 0; i < list.size(); i++) {\r\n                System.out.print(list.get(i) + \" \");\r\n            }\r\n            System.out.println();\r\n            return 1;\r\n        } else {\r\n            for (int i = k; i < list.size(); i++) {\r\n                swaplist(list, k, i);\r\n                numberofpermutation += permutation(list, k + 1);\r\n                swaplist(list, k, i);\r\n            }\r\n        }\r\n        return numberofpermutation;\r\n    }\r\n\r\n    public static void printPermutation(int[] arr, int n) {\r\n        System.out.println(\"Es gibt \" +Permutation(arr, n)+ \" Permutationen\");\r\n    }\r\n    public static void swaplist(ArrayList<Integer> list, int i, int j) {\r\n        int temp = list.get(i);\r\n        list.set(i, list.get(j));\r\n        list.set(j, temp);\r\n    }\r\n\r\n    public static void swaparray(int[] array, int i, int j) {\r\n        int temp = array[i];\r\n        array[i] = array[j];\r\n        array[j] = temp;\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        permutaionoflist();\r\n        printPermutation(new int[]{1, 2, 3}, 0);\r\n    }\r\n\r\n}\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/permutation.java b/src/permutation.java
+--- a/src/permutation.java	(revision 68088c0c264f6798948347324416eadfae8db08d)
++++ b/src/permutation.java	(date 1651012174480)
+@@ -4,48 +4,55 @@
+ public class permutation {
+ 
+ 
+-    public static int Permutation(int[] arr, int n) {
+-        int count = 0; // permutations counter wird iniziallisiert mit 0 und wird bei jeder Permutation um 1 erhöht
++    public static int PermutationOfList(int[] arr, int n) {
++        int count = 0; // permutations counter wird iniziallisiert mit 0 und wird bei jeder PermutationOfList um 1 erhöht
+         if (n == arr.length - 1) {
+             for (int i = 0; i < arr.length; i++) {
+-                System.out.print(arr[i] + " ");
++                System.out.print(arr[i] + " "); // ein Leerzeichen wird zwischen den werten gesetzt
+ 
+             }
+ 
+             System.out.println();
+-            return 1;
++            return 1; // die anzahl der permutationen wird ausgegeben
+ 
+         } else {
+             for (int i = n; i < arr.length; i++) {
+                 swaparray(arr, n, i);
+-                count += Permutation(arr, n + 1);
++                count += PermutationOfList(arr, n + 1); //mit jedem Aufruf wird der wert aufeinander gezählt und somit wird die anzahl der permutationen ermittlet
+                 swaparray(arr, n, i);
+             }
+         }
+-        return count;
++        return count; // die anzahl der permutationen wird ausgegeben
+     }
+ 
+     public static void permutaionoflist() {
+-        Scanner sc = new Scanner(System.in);
+-        System.out.println("Enter the number of elements in the list");
+-        int n = sc.nextInt();
+-        ArrayList<Integer> list = new ArrayList<Integer>();
+-        System.out.println("Enter the elements");
+-        for (int i = 0; i < n; i++) {
+-            list.add(sc.nextInt());
++
++        Scanner scanner = new Scanner(System.in); // liest die eingabe ein des benutzers
++        ArrayList<Integer> list = new ArrayList<>(); // erstellt eine neue ArrayList, die später die eingabe speichert
++        try {
++            while (scanner.hasNextLine()) {  // solange es einen neue wert gibt der eingegeben werden muss wird auf der eingabe des benutzers gewartet
++                String input = scanner.nextLine();
++                if (input.equals("")) { // wenn der benutzer ein leerer string eingegeben hat, wird die while schleife beendet und eine ausgabe wird erzeugt
++                    break;
++                }
++                list.add(Integer.parseInt(input)); // wenn der benutzer einen wert eingegeben hat, wird dieser in die ArrayList gespeichert
++            }
++        } catch (NumberFormatException e) {     // überprüft ob der benutzer einen Interger eingegeben hat
++            System.err.println("Es wurde keine Zahl eingegeben");
++            return;
+         }
+         System.out.println("The permutation of the list is");
+-        System.out.println("Es gibt " + permutation(list, 0) + " Permutationen");
++        System.out.println("Es gibt " + permutation(list, 0) + " Permutationen"); //gibt die Anzahl der Permutationen aus ab den nten wert
+     }
+ 
+     public static int permutation(ArrayList<Integer> list, int k) {
+-        int numberofpermutation = 0;
++        int numberofpermutation = 0; // wird iniziallisiert mit 0 und wird bei jeder PermutationOfList um 1 erhöht
+         if (k == list.size() - 1) {
+             for (int i = 0; i < list.size(); i++) {
+                 System.out.print(list.get(i) + " ");
+             }
+             System.out.println();
+-            return 1;
++            return 1; // nach jeder vollständigen PermutationOfList wird 1 zurückgegeben und dies ist bei numberofpermutation wichtig die ausgabe der methode benutzt wird um die anzahl der permutationen zu ermitteln
+         } else {
+             for (int i = k; i < list.size(); i++) {
+                 swaplist(list, k, i);
+@@ -53,27 +60,26 @@
+                 swaplist(list, k, i);
+             }
+         }
+-        return numberofpermutation;
++        return numberofpermutation; // die anzahl der permutationen wird ausgegeben
+     }
+ 
+-    public static void printPermutation(int[] arr, int n) {
+-        System.out.println("Es gibt " +Permutation(arr, n)+ " Permutationen");
++    public static void printPermutationOfArray(int[] arr, int n) {
++        System.out.println("Es gibt " + PermutationOfList(arr, n)+ " Permutationen"); // gibt die Anzahl der Permutationen aus, die ab den nten wert kommen
+     }
+     public static void swaplist(ArrayList<Integer> list, int i, int j) {
+-        int temp = list.get(i);
+-        list.set(i, list.get(j));
+-        list.set(j, temp);
++        int temp = list.get(i); // speichert den wert des index i in eine temporäre variable
++        list.set(i, list.get(j)); // setzt den wert des index i auf den wert des index j
++        list.set(j, temp);  // setzt den wert des index j auf den wert der temporären variable
+     }
+ 
+     public static void swaparray(int[] array, int i, int j) {
+-        int temp = array[i];
+-        array[i] = array[j];
+-        array[j] = temp;
++        int temp = array[i]; // speichert den wert des index i in einer Variable
++        array[i] = array[j]; // setzt den wert des index i auf den wert des index j
++        array[j] = temp; // setzt den wert des index j auf den wert der variable
+     }
+ 
+     public static void main(String[] args) {
+-        permutaionoflist();
+-        printPermutation(new int[]{1, 2, 3}, 0);
++
+     }
+ 
+ }
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+new file mode 100644
+--- /dev/null	(date 1651012174462)
++++ b/.idea/uiDesigner.xml	(date 1651012174462)
+@@ -0,0 +1,124 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Palette2">
++    <group name="Swing">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++      </item>
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.png" removable="false" auto-create-binding="false" can-attach-label="true">
++        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++        <initial-values>
++          <property name="text" value="Button" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="RadioButton" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="CheckBox" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="Label" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++          <preferred-size width="-1" height="20" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++      </item>
++    </group>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"984f0133-393c-4f54-a856-9e46e87ab92b\" name=\"Changes\" comment=\"nlknlkadfgnlksdg\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/Quiksort.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/QuiksortTwoP.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Quiksort.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Quiksort.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/enumiration.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/enumiration.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"284h0UzxISMYJkuN0eCgfUhU2Xh\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Aref/IdeaProjects/untitled/src&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Aref\\IdeaProjects\\untitled\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Quiksort\">\r\n    <configuration name=\"Quicksort2\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Quicksort2\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Quiksort\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Quiksort\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"QuiksortTwoP\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"QuiksortTwoP\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"enumiration\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"enumiration\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"quicksort2\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"quicksort2\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Quiksort\" />\r\n        <item itemvalue=\"Application.QuiksortTwoP\" />\r\n        <item itemvalue=\"Application.enumiration\" />\r\n        <item itemvalue=\"Application.quicksort2\" />\r\n        <item itemvalue=\"Application.Quicksort2\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"984f0133-393c-4f54-a856-9e46e87ab92b\" name=\"Changes\" comment=\"\" />\r\n      <created>1650481543157</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1650481543157</updated>\r\n      <workItem from=\"1650481544325\" duration=\"5007000\" />\r\n      <workItem from=\"1650524304678\" duration=\"5839000\" />\r\n      <workItem from=\"1650530204928\" duration=\"6000\" />\r\n      <workItem from=\"1650530230058\" duration=\"12000\" />\r\n      <workItem from=\"1650530300695\" duration=\"11000\" />\r\n      <workItem from=\"1650530357574\" duration=\"8000\" />\r\n      <workItem from=\"1650568400381\" duration=\"2133000\" />\r\n      <workItem from=\"1650571177044\" duration=\"2221000\" />\r\n      <workItem from=\"1650597133721\" duration=\"312000\" />\r\n      <workItem from=\"1650597706423\" duration=\"35000\" />\r\n      <workItem from=\"1650597761322\" duration=\"648000\" />\r\n      <workItem from=\"1650598425403\" duration=\"4611000\" />\r\n      <workItem from=\"1650633394737\" duration=\"5242000\" />\r\n      <workItem from=\"1650715367032\" duration=\"7313000\" />\r\n      <workItem from=\"1650750511145\" duration=\"2647000\" />\r\n      <workItem from=\"1650809028284\" duration=\"2101000\" />\r\n      <workItem from=\"1650818308855\" duration=\"12810000\" />\r\n      <workItem from=\"1650840566793\" duration=\"2101000\" />\r\n      <workItem from=\"1650895881422\" duration=\"23000\" />\r\n      <workItem from=\"1650895933445\" duration=\"3893000\" />\r\n      <workItem from=\"1650908462157\" duration=\"304000\" />\r\n      <workItem from=\"1650998515061\" duration=\"10533000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1650528957605</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650528957605</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1650529032459</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650529032459</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1650840579760</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650840579760</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1650846310002</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650846310002</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"nlknlkadfgnlksdg\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"nlknlkadfgnlksdg\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/permutation.java</url>\r\n          <line>6</line>\r\n          <properties class=\"permutation\" method=\"Permutation\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 68088c0c264f6798948347324416eadfae8db08d)
++++ b/.idea/workspace.xml	(date 1651033119705)
+@@ -5,11 +5,13 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="984f0133-393c-4f54-a856-9e46e87ab92b" name="Changes" comment="nlknlkadfgnlksdg">
+-      <change afterPath="$PROJECT_DIR$/src/Quiksort.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/QuiksortTwoP.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/enumearate.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Quiksort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiksort.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/enumiration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumiration.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/permutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/permutation.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/toArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toArray.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -37,27 +39,19 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Aref/IdeaProjects/untitled/src&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+-  }
+-}</component>
++  <component name="PropertiesComponent">
++    <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="node.js.detected.package.eslint" value="true" />
++    <property name="node.js.detected.package.tslint" value="true" />
++    <property name="node.js.selected.package.eslint" value="(autodetect)" />
++    <property name="node.js.selected.package.tslint" value="(autodetect)" />
++  </component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\Aref\IdeaProjects\untitled\src" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.Quiksort">
++  <component name="RunManager" selected="Application.quicksort2">
+     <configuration name="Quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="Quicksort2" />
+       <module name="untitled" />
+@@ -72,15 +66,15 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="QuiksortTwoP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="QuiksortTwoP" />
++    <configuration name="enumiration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="enumiration" />
+       <module name="untitled" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="enumiration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="enumiration" />
++    <configuration name="permutation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="permutation" />
+       <module name="untitled" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -95,11 +89,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.quicksort2" />
++        <item itemvalue="Application.Quicksort2" />
+         <item itemvalue="Application.Quiksort" />
+-        <item itemvalue="Application.QuiksortTwoP" />
+         <item itemvalue="Application.enumiration" />
+-        <item itemvalue="Application.quicksort2" />
+-        <item itemvalue="Application.Quicksort2" />
++        <item itemvalue="Application.permutation" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -128,11 +122,8 @@
+       <workItem from="1650750511145" duration="2647000" />
+       <workItem from="1650809028284" duration="2101000" />
+       <workItem from="1650818308855" duration="12810000" />
+-      <workItem from="1650840566793" duration="2101000" />
+-      <workItem from="1650895881422" duration="23000" />
+-      <workItem from="1650895933445" duration="3893000" />
+-      <workItem from="1650908462157" duration="304000" />
+-      <workItem from="1650998515061" duration="10533000" />
++      <workItem from="1650840566793" duration="1968000" />
++      <workItem from="1651012408305" duration="518000" />
+     </task>
+     <task id="LOCAL-00001" summary="nlknlkadfgnlksdg">
+       <created>1650528957605</created>
+@@ -155,14 +146,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1650840579760</updated>
+     </task>
+-    <task id="LOCAL-00004" summary="nlknlkadfgnlksdg">
+-      <created>1650846310002</created>
+-      <option name="number" value="00004" />
+-      <option name="presentableId" value="LOCAL-00004" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1650846310002</updated>
+-    </task>
+-    <option name="localTasksCounter" value="5" />
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -190,11 +174,20 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/permutation.java</url>
+           <line>6</line>
+-          <properties class="permutation" method="Permutation">
++          <properties class="permutation" method="PermutationOfList">
+             <option name="EMULATED" value="true" />
+             <option name="WATCH_EXIT" value="false" />
+           </properties>
+           <option name="timeStamp" value="3" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-method">
++          <url>file://$PROJECT_DIR$/src/enumiration.java</url>
++          <line>50</line>
++          <properties class="enumiration" method="removeDuplicates2">
++            <option name="EMULATED" value="true" />
++            <option name="WATCH_EXIT" value="false" />
++          </properties>
++          <option name="timeStamp" value="5" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>

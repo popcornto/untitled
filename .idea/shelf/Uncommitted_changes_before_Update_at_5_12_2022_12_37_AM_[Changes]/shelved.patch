@@ -1,0 +1,242 @@
+Index: src/enumiration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.Scanner;\r\n\r\npublic class enumiration {\r\n\r\n    public static void main(String[] args) {\r\n        Scanner scanner = new Scanner(System.in);\r\n        ArrayList<Integer> list = new ArrayList<>();\r\n        try {\r\n            while (scanner.hasNextLine()) { // liest die eingabe ein\r\n                String input = scanner.nextLine();\r\n                if (input.equals(\"\")) { // wenn die eingabe leer ist, wird die ausgabe erstellt und geht aus der schleife raus\r\n                    break;\r\n                }\r\n                list.add(Integer.parseInt(input)); // addiert die eingabe zur liste\r\n            }\r\n        } catch (NumberFormatException e) { // fängt NumberFormatException ab, wenn die Eingabe Integer Wert ist\r\n            System.err.println(\"Der Input was kein Integer Wert.\");\r\n            return;\r\n        }\r\n        /*\r\n        int[] data = new int[list.size()]; // Erstellt ein Array mit der Länge der Arraylist\r\n        for (int i = 0; i < data.length; i++) { // Füllt das Array mit den Elementen aus der Arraylist\r\n            data[i] = list.get(i);\r\n        }*/\r\n\r\n\r\n         /*\r\n        System.out.println(Arrays.toString(data)); // gibt das Array aus\r\n        System.out.print(removeDuplicates2(data));// entfernt doppelte Elemente\r\n        System.out.println(Arrays.toString(data)); // gibt das Array aus\r\n        */\r\n        //find(list, 17);\r\n\r\n    }\r\n\r\n    public static int permutation(ArrayList<Integer> list, int k) {\r\n        int numberofpermutation = 0;\r\n        if (k == list.size() - 1) {\r\n            for (int i = 0; i < list.size(); i++) {\r\n                System.out.print(list.get(i) + \" \");\r\n            }\r\n            System.out.println();\r\n            return 1;\r\n        } else {\r\n            for (int i = k; i < list.size(); i++) {\r\n                swaplist(list, k, i);\r\n                numberofpermutation += permutation(list, k + 1);\r\n                swaplist(list, k, i);\r\n            }\r\n        }\r\n        return numberofpermutation;\r\n    }\r\n\r\n    public static void swaplist(ArrayList<Integer> list, int k, int i) {\r\n        int temp = list.get(k);\r\n        list.set(k, list.get(i));\r\n        list.set(i, temp);\r\n    }\r\n\r\n    public static int removeDuplicates2(int[] data) {\r\n        int count = 0;\r\n        for (int i = 0; i < data.length - 1; i++) {\r\n            if (data[i] == data[i + 1]) {\r\n                if (data[i] != 0) {\r\n                    data[i] = 0;\r\n                }\r\n\r\n                count++;\r\n            }\r\n        }\r\n        Arrays.sort(data);\r\n        return count;\r\n    }\r\n\r\n    public static int fakultät(int k) {\r\n        if (k == 0) {\r\n            return 1;\r\n        }\r\n        return k * fakultät(k - 1);\r\n    }\r\n\r\n    public static void find(ArrayList<Integer> data, int k) {\r\n        if (data.size() == 1) {\r\n            System.out.println(data.get(0));\r\n        } else {\r\n            int i = (k - 1) / (fakultät(data.size() - 1));\r\n            int kn = k - i * (fakultät(data.size() - 1));\r\n            System.out.print(data.get(i));\r\n            data.remove(i);\r\n            find(data, kn);\r\n        }\r\n    }\r\n\r\n\r\n    // Print all subsets of given set[]\r\n    public static int printSubsets(char set[], int k) {\r\n        if (k == 0) {\r\n            System.out.println();\r\n            return 1;\r\n        } else {\r\n\r\n            return printSubsets(set, k - 1);\r\n        }\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/enumiration.java b/src/enumiration.java
+--- a/src/enumiration.java	
++++ b/src/enumiration.java	
+@@ -19,90 +19,41 @@
+             System.err.println("Der Input was kein Integer Wert.");
+             return;
+         }
+-        /*
++
+         int[] data = new int[list.size()]; // Erstellt ein Array mit der Länge der Arraylist
+         for (int i = 0; i < data.length; i++) { // Füllt das Array mit den Elementen aus der Arraylist
+             data[i] = list.get(i);
+-        }*/
+-
+-
+-         /*
+-        System.out.println(Arrays.toString(data)); // gibt das Array aus
+-        System.out.print(removeDuplicates2(data));// entfernt doppelte Elemente
+-        System.out.println(Arrays.toString(data)); // gibt das Array aus
+-        */
+-        //find(list, 17);
+-
+-    }
++        }
+ 
+-    public static int permutation(ArrayList<Integer> list, int k) {
+-        int numberofpermutation = 0;
+-        if (k == list.size() - 1) {
+-            for (int i = 0; i < list.size(); i++) {
+-                System.out.print(list.get(i) + " ");
+-            }
+-            System.out.println();
+-            return 1;
+-        } else {
+-            for (int i = k; i < list.size(); i++) {
+-                swaplist(list, k, i);
+-                numberofpermutation += permutation(list, k + 1);
+-                swaplist(list, k, i);
+-            }
+-        }
+-        return numberofpermutation;
+-    }
++        Arrays.sort(data);
++        System.out.println("Before removing duplicates: ");
++        System.out.println();
++        System.out.println(Arrays.toString(data)); // gibt das Array vor der Entfenung aus aus
++        System.out.println();
++        int remove = removeDuplicates2(data);   // entfernt doppelte Elemente
++        System.out.println("After removing duplicates: ");
++        for (int i = remove; i < data.length; i++) {// gibt das Array aus ab der stelle der entferneten duplikaten aus
++            System.out.print(data[i] + " ");
++        }
++        System.out.println();
++        System.out.println("Number of removed duplikates: " + remove); //Anzahl der Duplikate
+ 
+-    public static void swaplist(ArrayList<Integer> list, int k, int i) {
+-        int temp = list.get(k);
+-        list.set(k, list.get(i));
+-        list.set(i, temp);
++
+     }
+ 
+     public static int removeDuplicates2(int[] data) {
+-        int count = 0;
+-        for (int i = 0; i < data.length - 1; i++) {
++        int countdup = 0; //für die Zählung der duplikate zuständig
++        for (int i = 0; i < data.length - 1; i++) { //Iteriert durch das sortierte Array und überprüft ob das nächste Element ein Duplikat ist
+             if (data[i] == data[i + 1]) {
+-                if (data[i] != 0) {
+-                    data[i] = 0;
++                if (data[i] != Integer.MIN_VALUE) { //falls ja wird es mit der kleinsten Integer Zahl ersetzten die möglich ist ersetzt, aber diese wird bei der Ausgabe nicht betrachtet
++                    data[i] = Integer.MIN_VALUE;
+                 }
+ 
+-                count++;
++                countdup++; //die duplikaten anzahl spielt eine große Rolle bei der Ausgabe in der main Methode
+             }
+         }
+         Arrays.sort(data);
+-        return count;
+-    }
+-
+-    public static int fakultät(int k) {
+-        if (k == 0) {
+-            return 1;
+-        }
+-        return k * fakultät(k - 1);
+-    }
+-
+-    public static void find(ArrayList<Integer> data, int k) {
+-        if (data.size() == 1) {
+-            System.out.println(data.get(0));
+-        } else {
+-            int i = (k - 1) / (fakultät(data.size() - 1));
+-            int kn = k - i * (fakultät(data.size() - 1));
+-            System.out.print(data.get(i));
+-            data.remove(i);
+-            find(data, kn);
+-        }
+-    }
+-
+-
+-    // Print all subsets of given set[]
+-    public static int printSubsets(char set[], int k) {
+-        if (k == 0) {
+-            System.out.println();
+-            return 1;
+-        } else {
+-
+-            return printSubsets(set, k - 1);
+-        }
++        return countdup;
+     }
+ 
+ }
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"984f0133-393c-4f54-a856-9e46e87ab92b\" name=\"Changes\" comment=\"nlknlkadfgnlksdg\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/enumiration.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/enumiration.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"284h0UzxISMYJkuN0eCgfUhU2Xh\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Aref/IdeaProjects/untitled/src&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Aref\\IdeaProjects\\untitled\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.enumiration\">\r\n    <configuration name=\"Quicksort2\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Quicksort2\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Quiksort\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Quiksort\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"QuiksortTwoP\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"QuiksortTwoP\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"enumiration\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"enumiration\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"quicksort2\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"quicksort2\" />\r\n      <module name=\"untitled\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.enumiration\" />\r\n        <item itemvalue=\"Application.Quiksort\" />\r\n        <item itemvalue=\"Application.QuiksortTwoP\" />\r\n        <item itemvalue=\"Application.quicksort2\" />\r\n        <item itemvalue=\"Application.Quicksort2\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"984f0133-393c-4f54-a856-9e46e87ab92b\" name=\"Changes\" comment=\"\" />\r\n      <created>1650481543157</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1650481543157</updated>\r\n      <workItem from=\"1650481544325\" duration=\"5007000\" />\r\n      <workItem from=\"1650524304678\" duration=\"5839000\" />\r\n      <workItem from=\"1650530204928\" duration=\"6000\" />\r\n      <workItem from=\"1650530230058\" duration=\"12000\" />\r\n      <workItem from=\"1650530300695\" duration=\"11000\" />\r\n      <workItem from=\"1650530357574\" duration=\"8000\" />\r\n      <workItem from=\"1650568400381\" duration=\"2133000\" />\r\n      <workItem from=\"1650571177044\" duration=\"2221000\" />\r\n      <workItem from=\"1650597133721\" duration=\"312000\" />\r\n      <workItem from=\"1650597706423\" duration=\"35000\" />\r\n      <workItem from=\"1650597761322\" duration=\"648000\" />\r\n      <workItem from=\"1650598425403\" duration=\"4611000\" />\r\n      <workItem from=\"1650633394737\" duration=\"5242000\" />\r\n      <workItem from=\"1650715367032\" duration=\"7313000\" />\r\n      <workItem from=\"1650750511145\" duration=\"2647000\" />\r\n      <workItem from=\"1650809028284\" duration=\"2101000\" />\r\n      <workItem from=\"1650818308855\" duration=\"12810000\" />\r\n      <workItem from=\"1650840566793\" duration=\"2101000\" />\r\n      <workItem from=\"1650895881422\" duration=\"23000\" />\r\n      <workItem from=\"1650895933445\" duration=\"3893000\" />\r\n      <workItem from=\"1650908462157\" duration=\"304000\" />\r\n      <workItem from=\"1650998515061\" duration=\"12455000\" />\r\n      <workItem from=\"1651177849728\" duration=\"9581000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1650528957605</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650528957605</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1650529032459</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650529032459</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1650840579760</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650840579760</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1650846310002</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650846310002</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1651011906751</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651011906751</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"nlknlkadfgnlksdg\">\r\n      <created>1651013770509</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651013770509</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"nlknlkadfgnlksdg\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"nlknlkadfgnlksdg\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/permutation.java</url>\r\n          <line>6</line>\r\n          <properties class=\"permutation\" method=\"Permutation\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,8 +5,13 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="984f0133-393c-4f54-a856-9e46e87ab92b" name="Changes" comment="nlknlkadfgnlksdg">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/Frequezcounter.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/smallestSubset.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Quiksort.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiksort.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Quiksort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiksort.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/QuiksortTwoP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuiksortTwoP.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/enumiration.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumiration.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/enumiration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumiration.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -35,29 +40,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Aref/IdeaProjects/untitled/src&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+-  }
+-}</component>
++  <component name="PropertiesComponent">
++    <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="node.js.detected.package.eslint" value="true" />
++    <property name="node.js.detected.package.tslint" value="true" />
++    <property name="node.js.selected.package.eslint" value="(autodetect)" />
++    <property name="node.js.selected.package.tslint" value="(autodetect)" />
++    <property name="nodejs_package_manager_path" value="npm" />
++    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
++  </component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\Aref\IdeaProjects\untitled\src" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.enumiration">
+-    <configuration name="Quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="Quicksort2" />
++  <component name="RunManager" selected="Application.Frequezcounter">
++    <configuration name="Frequezcounter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="Frequezcounter" />
+       <module name="untitled" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -84,8 +83,8 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="quicksort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="quicksort2" />
++    <configuration name="smallestSubset" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="smallestSubset" />
+       <module name="untitled" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -93,11 +92,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Frequezcounter" />
++        <item itemvalue="Application.smallestSubset" />
+         <item itemvalue="Application.enumiration" />
+         <item itemvalue="Application.Quiksort" />
+         <item itemvalue="Application.QuiksortTwoP" />
+-        <item itemvalue="Application.quicksort2" />
+-        <item itemvalue="Application.Quicksort2" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -132,6 +131,10 @@
+       <workItem from="1650908462157" duration="304000" />
+       <workItem from="1650998515061" duration="12455000" />
+       <workItem from="1651177849728" duration="9581000" />
++      <workItem from="1651681920637" duration="151000" />
++      <workItem from="1651835665369" duration="186000" />
++      <workItem from="1651835915187" duration="49000" />
++      <workItem from="1651836019733" duration="5996000" />
+     </task>
+     <task id="LOCAL-00001" summary="nlknlkadfgnlksdg">
+       <created>1650528957605</created>
+@@ -208,6 +211,15 @@
+             <option name="WATCH_EXIT" value="false" />
+           </properties>
+           <option name="timeStamp" value="3" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-method">
++          <url>file://$PROJECT_DIR$/src/Frequezcounter.java</url>
++          <line>21</line>
++          <properties class="Frequezcounter" method="count">
++            <option name="EMULATED" value="true" />
++            <option name="WATCH_EXIT" value="false" />
++          </properties>
++          <option name="timeStamp" value="4" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
