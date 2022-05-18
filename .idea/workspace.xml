@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="984f0133-393c-4f54-a856-9e46e87ab92b" name="Changes" comment="nlknlkadfgnlksdg">
-      <change afterPath="$PROJECT_DIR$/src/smallestSubset.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Frequezcounter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/QuickSelect.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frequezcounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frequezcounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heaps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heaps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuickSelect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuickSelect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Quiksort.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiksort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Quiksort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiksort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuiksortTwoP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuiksortTwoP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enumiration.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumiration.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +151,7 @@
       <workItem from="1652038907300" duration="717000" />
       <workItem from="1652200152792" duration="5925000" />
       <workItem from="1652306840000" duration="950000" />
-      <workItem from="1652334704435" duration="18174000" />
+      <workItem from="1652334704435" duration="19030000" />
     </task>
     <task id="LOCAL-00001" summary="nlknlkadfgnlksdg">
       <created>1650528957605</created>
@@ -208,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651187703875</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="nlknlkadfgnlksdg">
+      <created>1652368904165</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1652368904165</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
