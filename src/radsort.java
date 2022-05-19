@@ -52,17 +52,17 @@ public class radsort {
     public static int[] sortByByte(int[] data, int l, int r, int b) {
 
         int[] count = new int[256];
-        int[] output = new int[r-l+1];
+        int[] output = new int[r-l+1];      //Neuen Array anlegen in dem die Sortierten werte abgespeichert werden
         for (int i = l; i <= r; i++) {
             count[255-((data[i] >> (8 * b)) & 0xFF)]++;
             System.out.println(digit(data[i], b) +" :" + data[i]);
         }
         for (int i = 1; i < 256; i++) {
-            count[i] += count[i-1];
+            count[i] += count[i-1];             //Schlüssel werden erstellt indem man die werte nacheinander miteinander addiert
         }
         for (int i = r; i >= l; i--) {
-            output[count[255-((data[i] >> (8 * b)) & 0xFF)] - 1] = data[i];
-            count[255-((data[i] >> (8 * b)) & 0xFF)]--;
+            output[count[255-((data[i] >> (8 * b)) & 0xFF)] - 1] = data[i];//Schlüssel werden benutzt um die Stellen zu bestimmen an denen der Wert abgespeichert wird
+            count[255-((data[i] >> (8 * b)) & 0xFF)]--;//Schlüssel an der Stelle des Wertes um 1 veringern falls der Wert nochmal vorkommt
         }
         for (int i = l; i <= r; i++) {
             data[i] = output[i-l];

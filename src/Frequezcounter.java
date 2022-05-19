@@ -40,7 +40,7 @@ public class Frequezcounter {
         }
         for (int i = 0; i < data.length; i++) {
             out[help[data[i] - getMin(data)] - 1] = data[i];     //Schlüssel werden benutzt um die Stellen zu bestimmen an denen der Wert abgespeichert wird
-            help[data[i] - getMin(data)]--;                      //Schlüssel an der Stelle des Wertes um 1 veringern falls der Wert nochmal vorkommt
+            help[data[i] - getMin(data)]--; //Schlüssel an der Stelle des Wertes um 1 veringern falls der Wert nochmal vorkommt
         }
         return out;
     }
