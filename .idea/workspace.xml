@@ -5,16 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="984f0133-393c-4f54-a856-9e46e87ab92b" name="Changes" comment="nlknlkadfgnlksdg">
-      <change afterPath="$PROJECT_DIR$/src/Edge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GraphApplication.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Hashtables/SimpleHT.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Hashtables/SimpleHTTest234.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Hashtables/SimpleHTTestA1.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Hashtables/SimpleHashFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mark.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/SimpleHT.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/SimpleHTTestA1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeightedStuff/HeapElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeightedStuff/Mark.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeightedStuff/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeightedStuff/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeightedStuff/WeightedEdge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeightedStuff/WeightedGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +33,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -66,9 +75,16 @@
       <recent name="C:\Users\Aref\IdeaProjects\untitled\src\b" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Graph">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="Graph" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Graph" />
+      <module name="untitled" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GraphApplication" />
       <module name="untitled" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -87,26 +103,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SimpleHTTest234" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SimpleHTTest234" />
-      <module name="untitled" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SimpleHTTestA1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SimpleHTTestA1" />
-      <module name="untitled" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SimpleHTTestA1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Hashtables.SimpleHTTestA1" />
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeightedStuff.Test" />
       <module name="untitled" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Hashtables.*" />
+          <option name="PATTERN" value="WeightedStuff.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WeightedGraph" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeightedStuff.WeightedGraph" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="WeightedStuff.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,19 +130,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.WeightedGraph" />
+      <item itemvalue="Application.GraphApplication" />
       <item itemvalue="Application.Graph" />
-      <item itemvalue="Application.SimpleHTTestA1 (1)" />
       <item itemvalue="Application.Hashtables.SimpleHTTest234" />
-      <item itemvalue="Application.SimpleHTTest234" />
-      <item itemvalue="Application.SimpleHTTestA1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.WeightedGraph" />
+        <item itemvalue="Application.GraphApplication" />
         <item itemvalue="Application.Graph" />
         <item itemvalue="Application.Hashtables.SimpleHTTest234" />
-        <item itemvalue="Application.SimpleHTTestA1" />
-        <item itemvalue="Application.SimpleHTTestA1 (1)" />
-        <item itemvalue="Application.SimpleHTTest234" />
       </list>
     </recent_temporary>
   </component>
@@ -202,6 +217,17 @@
       <workItem from="1654595531655" duration="712000" />
       <workItem from="1654596257710" duration="37000" />
       <workItem from="1654596304725" duration="1709000" />
+      <workItem from="1654722942128" duration="395000" />
+      <workItem from="1654723353071" duration="172000" />
+      <workItem from="1654801547422" duration="90000" />
+      <workItem from="1654803158148" duration="155000" />
+      <workItem from="1654812573374" duration="269000" />
+      <workItem from="1655050236602" duration="1809000" />
+      <workItem from="1655089966100" duration="3390000" />
+      <workItem from="1655235090791" duration="78000" />
+      <workItem from="1655235240604" duration="1413000" />
+      <workItem from="1655236853933" duration="379000" />
+      <workItem from="1655277478495" duration="527000" />
     </task>
     <task id="LOCAL-00001" summary="nlknlkadfgnlksdg">
       <created>1650528957605</created>
@@ -266,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653004426870</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="nlknlkadfgnlksdg">
+      <created>1654723286277</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1654723286277</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

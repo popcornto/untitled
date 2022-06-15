@@ -1,12 +1,17 @@
-import java.util.*;
-import java.io.*;
+package WeightedStuff;
 
-public class Graph {
+
+
+import java.io.*;
+import java.util.*;
+
+public class WeightedGraph {
+
     private Node[] graph;
     private int n;
     private int m;
 
-    public Graph(int n, int m) {
+    public WeightedGraph(int n, int m) {
         this.n = n;
         this.m = m;
         graph = new Node[n];
@@ -38,15 +43,15 @@ public class Graph {
         return null;
     }
 
-    public boolean addEdge(int src, int dsc) {
-        if (containsID(src) && containsID(dsc)) {
-            getNode(src).addEdge(getNode(dsc));
+    public boolean addEdge(int src, int dst, int weight) {
+        if (containsID(src) && containsID(dst)) {
+            getNode(src).addEdge(getNode(dst), weight);
             return true;
         }
         return false;
     }
 
-    public static Graph fromFile(String filepath) {
+    public static WeightedGraph fromFile(String filepath) {
         try {
             if (filepath == null) {
                 throw new IllegalArgumentException("filepath is null");
@@ -73,7 +78,7 @@ public class Graph {
                     }
                     int n = Integer.parseInt(args[2]);
                     int m = Integer.parseInt(args[3]);
-                    Graph graph = new Graph(n, m);
+                    WeightedGraph graph = new WeightedGraph(n, m);
                     for (int i = 0; i < n; i++) {
                         graph.graph[i] = new Node(i);
                     }
@@ -83,7 +88,8 @@ public class Graph {
                         if (args[0].equals("e")) {
                             int src = Integer.parseInt(args[1]);
                             int dsc = Integer.parseInt(args[2]);
-                            graph.addEdge(src, dsc);
+                            int weight = Integer.parseInt(args[3]);
+                            graph.addEdge(src, dsc, weight);
                         }
                     }
                     return graph;
@@ -103,36 +109,10 @@ public class Graph {
         for (int i = 0; i < n; i++) {
             System.out.println("Knoten " + i + ": ");
             for (int j = 0; j < graph[i].getAnzahlAdjanzen(); j++) {
-                System.out.println(graph[i].getAdjanz(j).getDst().getID());
+                System.out.println("Kante: " + graph[i].getAdjanz(j).getDst().getID() + " Gewicht: " + graph[i].getAdjanz(j).getWeight());
             }
         }
         return "";
-    }
-
-    public int kurzesteWegzuKnoten(Graph graph, int s, int t) {
-        if (s > t) {
-            int temp = s;
-            s = t;
-            t = temp;
-        }
-        int[] distance = new int[graph.getAnzahlKnoten()];
-        for (int i = 0; i < distance.length; i++) {
-            distance[i] = Integer.MAX_VALUE;
-        }
-        distance[s] = 0;
-        LinkedList<Integer> queue = new LinkedList<Integer>();
-        queue.addLast(s);
-        while (!queue.isEmpty()) {
-            int u = queue.removeFirst();
-            for (int i = 0; i < graph.getNode(u).getAnzahlAdjanzen(); i++) {
-                int v = graph.getNode(u).getAdjanz(i).getDst().getID();
-                if (distance[v] == Integer.MAX_VALUE) {
-                    distance[v] = distance[u] + 1;
-                    queue.addLast(v);
-                }
-            }
-        }
-        return distance[t];
     }
 
     public static boolean dfs(List<Node> solution, Node currentNode, Mark[] marked) {
@@ -145,11 +125,15 @@ public class Graph {
                 if (marked[currentNode.getID()] == Mark.Unmarked) {
                     marked[currentNode.getID()] = Mark.Temporary;
                     for (int i = 0; i < currentNode.getAnzahlAdjanzen(); i++) {
-                        solution.add(0, currentNode.getAdjanz(i).getDst());
-                        dfs(solution, currentNode.getAdjanz(i).getDst(), marked);
+                        if (marked[currentNode.getAdjanz(i).getDst().getID()] == Mark.Permanent) {
+                        } else {
+                            if (dfs(solution, currentNode.getAdjanz(i).getDst(), marked) == false) {
+                                return false;
+                            }
+                        }
                     }
-                    solution.add(0, currentNode);
                     marked[currentNode.getID()] = Mark.Permanent;
+                    solution.add(0, currentNode);
                     return true;
                 } else {
                     return false;
@@ -158,19 +142,77 @@ public class Graph {
         }
     }
 
-    public static List<Node> topoSort(Graph g) {
-        List<Node> solution = new ArrayList<>();
+    public static List<Node> topoSort(WeightedGraph g) {
+        List<Node> solution = new ArrayList<Node>();
         Mark[] marked = new Mark[g.getAnzahlKnoten()];
         for (int i = 0; i < marked.length; i++) {
             marked[i] = Mark.Unmarked;
         }
         for (int i = 0; i < g.getAnzahlKnoten(); i++) {
-            if (marked[i] == Mark.Unmarked) {
-                dfs(solution, g.getNode(i), marked);
+            if (dfs(solution, g.getNode(i), marked) == false) {
+                return null;
             }
         }
         return solution;
     }
+    /*public static int dijkstra(WeightedGraph g, int s, int t){
+        int[] dist= new int[g.getAnzahlKnoten()];                           //Array in dem Distanzen abgespeichert werden
+        PriorityQueue<HeapElement> U= new PriorityQueue<HeapElement>();
+        PriorityQueue<HeapElement> U1= new PriorityQueue<HeapElement>();
+        PriorityQueue<HeapElement> S= new PriorityQueue<HeapElement>();
+        for (int i = 0; i < dist.length; i++) {
+            dist[i]=Integer.MAX_VALUE;
+        }
+        HeapElement Element = new HeapElement(0,g.getNode(s));
+        HeapElement Element1= new HeapElement();
+        dist[s]=0;
+        U.add(Element);
+        while(!U.isEmpty()){
+            U1=U;
+            int min=Integer.MAX_VALUE;
+            for(int i=0;i<U1.size();i++) {
+                Element= U1.remove();
+                Node n= Element.getNode();
+                if(dist[n.getID()]<=min){
+                    min=dist[n.getID()];
+                    Element1= Element;
+            }
+            S.add(Element1);
+            }
+            U.remove(Element1);
+            Node n1=Element1.getNode();
+            for(int i=0;i<n1.getAnzahlAdjanzen();i++){
+                U.add(new HeapElement(n1.getAdjanz(i).getWeight()+dist[n1.getID()],n1.getAdjanz(i).getDst()));
+            }
 
+        }
+    }*/
+    public static int dijkstra(WeightedGraph g, int s, int t) {
 
+        int[] dist = new int[g.getAnzahlKnoten()];
+        for (int i = 0; i < dist.length; i++) {
+            dist[i] = Integer.MAX_VALUE;
+        }
+        dist[s] = 0;
+
+        PriorityQueue<HeapElement> queue = new PriorityQueue<HeapElement>();
+        queue.add(new HeapElement(dist[s],g.getNode(s)));
+
+        while (!queue.isEmpty()) {
+            HeapElement current = queue.remove();
+            int currentID = current.getNode().getID();
+            if (currentID == t) {
+                return dist[currentID];
+            }
+            for (int i = 0; i < g.getNode(currentID).getAnzahlAdjanzen(); i++) {
+                int adjanzID = g.getNode(currentID).getAdjanz(i).getDst().getID();
+                int newDist = dist[currentID] + g.getNode(currentID).getAdjanz(i).getWeight();
+                if (newDist < dist[adjanzID]) {
+                    dist[adjanzID] = newDist;
+                    queue.add(new HeapElement(dist[adjanzID],g.getNode(currentID).getAdjanz(i).getDst()));
+                }
+            }
+        }
+        return -1;
+    }
 }

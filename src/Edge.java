@@ -15,7 +15,4 @@ public class Edge {
         return src.getID()+" "+dst.getID();
     }
 
-    public int getWeight() {
-        return 0;
-    }
 }
